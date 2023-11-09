@@ -1,5 +1,3 @@
-## dundee-project-1
+## Dundee software project -> Project 1(React)
 
-##Dundee software project -> Project 1(React)
-
-#This is the documentation of the dundee tech program project
+This is the documentation of the dundee tech program project
