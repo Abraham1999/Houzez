@@ -7,7 +7,7 @@ import { navigation } from "../utils/data";
 function Navbar() {
   const location = useLocation();
   return (
-    <Disclosure as="nav" className="bg-gray-100">
+    <Disclosure as="nav" className="bg- bg-[#FAF3F0]">
       {({ open }) => (
         <>
           <div className="mx-auto px-2 sm:px-6 lg:px-8">
@@ -27,7 +27,7 @@ function Navbar() {
                 <div className="flex flex-shrink-0 items-center">
                   <Link to="/">
                     <img
-                      className="h-8 w-auto"
+                      className="h-8 w-auto cursor-pointer"
                       src={require("../assets/images/houzez.png")}
                       alt="Houzez"
                     />
