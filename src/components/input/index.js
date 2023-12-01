@@ -8,8 +8,9 @@ const Input = ({
   placeholder,
   error,
   disabled,
-  innerRef
-}) => {  
+  value,
+  innerRef,
+}) => {
   return (
     <div className="">
       <label htmlFor={name}>{label}</label>
@@ -21,10 +22,11 @@ const Input = ({
         disabled={disabled}
         className={`${extraStyle}`}
         ref={innerRef}
+        defaultValue={value}
       />
       {error && <p className="">{label} required</p>}
     </div>
   );
-}
+};
 
 export default Input;

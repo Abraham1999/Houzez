@@ -8,6 +8,17 @@ import { useContext } from "react";
 function Navbar() {
   const location = useLocation();
   const user = useContext(UserContext);
+
+  const filteredNavigationList = () => {
+    if (user === null) {
+      return navigation;
+    } else if (user[0].accountType === "seller") {
+      return navigation.filter((item) => item.name !== "Sellers");
+    } else if (user[0].accountType === "buyer") {
+      return navigation.filter((item) => item.name !== "Buyer");
+    }
+  };
+
   return (
     <Disclosure
       as="nav"
@@ -42,7 +53,7 @@ function Navbar() {
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
-                    {navigation.map((item) => (
+                    {filteredNavigationList().map((item) => (
                       <Link
                         key={item.name}
                         to={item.href}
@@ -81,7 +92,7 @@ function Navbar() {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
-              {navigation.map((item) => (
+              {filteredNavigationList().map((item) => (
                 <Disclosure.Button
                   key={item.name}
                   as="a"

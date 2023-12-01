@@ -2,7 +2,7 @@ import "./App.css";
 import "tailwindcss/tailwind.css";
 import { Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/landing";
-import PropertyPage from "./pages/property";
+import PropertiesPage from "./pages/property";
 import SellersPage from "./pages/seller";
 import BuyersPage from "./pages/buyer";
 import BookingsPage from "./pages/bookings";
@@ -13,6 +13,8 @@ import Navbar from "./layout/Navbar";
 import { useEffect, useState } from "react";
 import { UserContext } from "./utils/helpers";
 import { getUserByEmail } from "./services/actions/users";
+import AddProperty from "./pages/property/add";
+import PropertyByIdPage from "./pages/property/id";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -27,11 +29,12 @@ function App() {
 
   return (
     <UserContext.Provider value={user}>
-      {/* <Navbar /> */}
+      <Navbar />
       <Routes>
-        {/* <Route path="/" element={<LandingPage />} /> */}
-        <Route path="/" element={<p>Landing Page</p>} />
-        <Route path="property" element={<PropertyPage />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="property" element={<PropertiesPage />} />
+        <Route path="property/:id" element={<PropertyByIdPage />} />
+        <Route path="property/add" element={<AddProperty />} />
         <Route path="sellers" element={<SellersPage />} />
         <Route path="buyers" element={<BuyersPage />} />
         <Route path="property/:propertyId/booking" element={<BookingsPage />} />

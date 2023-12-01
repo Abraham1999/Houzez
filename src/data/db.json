@@ -1,26 +1,57 @@
 {
   "users": [
     {
-      "firstName": "Hello",
-      "lastName": "eTs",
-      "email": "Joshdoe@gmail.com",
+      "firstName": "Abraham",
+      "lastName": "Kolawole",
+      "email": "test2@gmail.com",
       "address": "32 Dundee Road",
       "postcode": "DR 234",
       "phone": "123454",
       "password": "12345",
+      "accountType": "seller",
       "id": 1
     },
     {
-      "firstName": "Testing",
-      "lastName": "Testing",
-      "email": "test2@gmail.com",
-      "address": "123 Fake Street",
-      "postcode": "FK 123",
+      "firstName": "Josh",
+      "lastName": "Doe",
+      "email": "test12@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
       "phone": "123454",
       "password": "12345",
+      "accountType": "buyer",
       "id": 2
+    },
+    {
+      "firstName": "Test",
+      "lastName": "User",
+      "email": "test3@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "buyer",
+      "id": 3
     }
   ],
-  "property": [],
+  "property": [
+    {
+      "image": {
+        "id": 5,
+        "url": "https://images.pexels.com/photos/164522/pexels-photo-164522.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      },
+      "sellerId": 1,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT",
+      "address": "1213 Fake Street",
+      "postcode": "123 FS1",
+      "description": "Beautiful house in uk",
+      "price": "392000",
+      "type": "Bungalow",
+      "bathrooms": "5",
+      "bedrooms": "6",
+      "garden": "3",
+      "id": 1
+    }
+  ],
   "booking": []
 }

@@ -72,6 +72,8 @@ const RegisterPage = () => {
           postcode: postcodeRef.current.value,
           phone: phoneRef.current.value,
           password: passwordRef.current.value,
+          accountType,
+          createdAt: new Date().toUTCString(),
         },
         dispatch
       );

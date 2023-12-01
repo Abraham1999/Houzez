@@ -49,3 +49,21 @@ export const loginUserHandler = async ({ email, password }) => {
     return data;
   }
 };
+
+export const getUsers = (dispatch, type) => {
+  fetch(`http://localhost:5000/users?accountType=${type}`)
+    .then((response) => {
+      if (!response.ok) {
+        alert("An error has occurred.");
+        throw response.status;
+      } else {
+        return response.json();
+      }
+    })
+    .then((users) => {
+      dispatch({ type: "GET_USERS", payload: users });
+    })
+    .catch((error) => {
+      alert(error);
+    });
+};
