@@ -1,13 +1,20 @@
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { classNames } from "../utils/helpers";
+import { UserContext, classNames } from "../utils/helpers";
 import { Link, useLocation } from "react-router-dom";
 import { navigation } from "../utils/data";
+import { useContext } from "react";
 
 function Navbar() {
   const location = useLocation();
+  const user = useContext(UserContext);
   return (
-    <Disclosure as="nav" className="bg- bg-[#FAF3F0]">
+    <Disclosure
+      as="nav"
+      className={classNames(
+        location.pathname === "/" ? "bg-[#FAF3F0]" : "bg-white"
+      )}
+    >
       {({ open }) => (
         <>
           <div className="mx-auto px-2 sm:px-6 lg:px-8">
@@ -53,12 +60,21 @@ function Navbar() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <Link
-                  to="register"
-                  className="font-semibold relative rounded-full border border-[#0C356A] px-2 text-[#0C356A] hover:text-[#0C356A] focus:outline-none focus:ring-2 focus:ring-[#0C356A] focus:ring-offset-2 focus:ring-offset-[#0C356A]"
-                >
-                  Get started
-                </Link>
+                {user === null ? (
+                  <Link
+                    to="register"
+                    className="font-semibold relative rounded-full border border-[#0C356A] px-2 text-[#0C356A] hover:text-[#0C356A] focus:outline-none focus:ring-2 focus:ring-[#0C356A] focus:ring-offset-2 focus:ring-offset-[#0C356A]"
+                  >
+                    Get started
+                  </Link>
+                ) : (
+                  <Link
+                    to="#"
+                    className="font-semibold relative rounded-full border border-[#0C356A] px-2 text-[#0C356A] hover:text-[#0C356A] focus:outline-none focus:ring-2 focus:ring-[#0C356A] focus:ring-offset-2 focus:ring-offset-[#0C356A]"
+                  >
+                    Profile
+                  </Link>
+                )}
               </div>
             </div>
           </div>

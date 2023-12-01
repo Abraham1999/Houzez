@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const LandingPage = () => {
-  const [images, setImages] = useState([
+  const [images] = useState([
     { url: "landing1.jpeg", price: "£5,404/mo", interest: "3.5%" },
     { url: "landing2.jpeg", price: "£3,500/mo", interest: "4.0%" },
     { url: "landing3.jpeg", price: "£1,900/mo", interest: "3.%" },

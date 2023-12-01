@@ -10,25 +10,36 @@ import LoginPage from "./pages/auth/login";
 import RegisterPage from "./pages/auth/register";
 import NotFoundPage from "./pages/notfound";
 import Navbar from "./layout/Navbar";
+import { useEffect, useState } from "react";
+import { UserContext } from "./utils/helpers";
+import { getUserByEmail } from "./services/actions/users";
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    getUserByEmail()
+      .then((data) => {
+        setUser(data);
+      })
+      .catch((err) => alert(err));
+  }, []);
+
   return (
-    <div>
-      <Navbar />
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="property" element={<PropertyPage />} />
-          <Route path="sellers" element={<SellersPage />} />
-          <Route path="buyers" element={<BuyersPage />} />
-          <Route
-            path="property/:propertyId/booking"
-            element={<BookingsPage />}
-          />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="register" element={<RegisterPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-    </div>
+    <UserContext.Provider value={user}>
+      {/* <Navbar /> */}
+      <Routes>
+        {/* <Route path="/" element={<LandingPage />} /> */}
+        <Route path="/" element={<p>Landing Page</p>} />
+        <Route path="property" element={<PropertyPage />} />
+        <Route path="sellers" element={<SellersPage />} />
+        <Route path="buyers" element={<BuyersPage />} />
+        <Route path="property/:propertyId/booking" element={<BookingsPage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </UserContext.Provider>
   );
 }
 

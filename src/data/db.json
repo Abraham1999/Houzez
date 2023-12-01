@@ -1,6 +1,26 @@
 {
-  "seller": [],
+  "users": [
+    {
+      "firstName": "Hello",
+      "lastName": "eTs",
+      "email": "Joshdoe@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "id": 1
+    },
+    {
+      "firstName": "Testing",
+      "lastName": "Testing",
+      "email": "test2@gmail.com",
+      "address": "123 Fake Street",
+      "postcode": "FK 123",
+      "phone": "123454",
+      "password": "12345",
+      "id": 2
+    }
+  ],
   "property": [],
-  "buyer": [],
   "booking": []
 }
