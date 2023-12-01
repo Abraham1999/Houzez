@@ -43,8 +43,8 @@ export const getProperty = (dispatch, id, setLoading) => {
         return response.json();
       }
     })
-    .then((properties) => {
-      dispatch({ type: "GET_PROPERTY", payload: properties });
+    .then((data) => {
+      dispatch({ type: "GET_PROPERTY", payload: data });
       setLoading(false);
     })
     .catch((error) => {
@@ -62,8 +62,8 @@ export const deleteProperty = (dispatch, id) => {
         return response.json();
       }
     })
-    .then((properties) => {
-      dispatch({ type: "DELETE_PROPERTY", payload: properties });
+    .then((data) => {
+      dispatch({ type: "DELETE_PROPERTY", payload: data });
     })
     .catch((error) => {
       alert(error);

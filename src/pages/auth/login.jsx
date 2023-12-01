@@ -45,7 +45,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (localStorage.getItem("houzez_email")) {
-      navigate("/property");
+      navigate(-1);
     }
   }, [navigate]);
 
