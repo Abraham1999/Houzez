@@ -11,14 +11,12 @@ const SellersPage = () => {
   const [sellers, dispatch] = useReducer(usersReducer, []);
 
   useEffect(() => {
-    if (user === null) {
+    if (!localStorage.getItem("houzez_email")) {
       navigate("/login");
+    } else {
+      getUsers(dispatch, "seller");
     }
-  }, [navigate, user]);
-
-  useEffect(() => {
-    getUsers(dispatch, "seller");
-  }, []);
+  }, [navigate]);
 
   console.log(sellers);
   return <div>sellers Page</div>;

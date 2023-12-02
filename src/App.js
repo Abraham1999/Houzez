@@ -15,6 +15,7 @@ import { UserContext } from "./utils/helpers";
 import { getUserByEmail } from "./services/actions/users";
 import AddProperty from "./pages/property/add";
 import PropertyByIdPage from "./pages/property/id";
+import Footer from "./layout/Footer";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -28,6 +29,7 @@ function App() {
   }, []);
 
   return (
+    <div className="flex flex-col min-h-screen">
     <UserContext.Provider value={user}>
       <Navbar />
       <Routes>
@@ -42,7 +44,9 @@ function App() {
         <Route path="register" element={<RegisterPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Footer />
     </UserContext.Provider>
+    </div>
   );
 }
 

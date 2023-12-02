@@ -1,17 +1,22 @@
 import { useContext, useEffect, useReducer } from "react";
 import { UserContext } from "../../utils/helpers";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { propertyReducer } from "../../services/reducers/property";
 import { getProperties } from "../../services/actions/properties";
 
 const PropertiesPage = () => {
+  const navigate = useNavigate();
   const user = useContext(UserContext);
 
   const [properties, dispatch] = useReducer(propertyReducer, []);
 
   useEffect(() => {
-    getProperties(dispatch);
-  }, []);
+    if (!localStorage.getItem("houzez_email")) {
+      navigate("/login");
+    } else {
+      getProperties(dispatch);
+    }
+  }, [navigate]);
 
   return (
     <div>

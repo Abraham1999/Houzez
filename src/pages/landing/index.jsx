@@ -5,6 +5,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { landingPageCards } from "../../utils/data";
 
 const LandingPage = () => {
   const [images] = useState([
@@ -76,7 +77,11 @@ const LandingPage = () => {
         </div>
       </div>
 
-      <div className="bg-white px-8 py-12">
+      <div className="bg-white px-8 py-16">
+        <h1 className="pb-10 text-center text-5xl font-semibold">
+          Why choose Houzez
+        </h1>
+
         <div className="text-center grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <div>
             <CurrencyPoundIcon
@@ -106,12 +111,39 @@ const LandingPage = () => {
               className="h-12 w-12 text-[#0C356A] mx-auto"
               aria-hidden="true"
             />
-            <h3>Faster Property Closing</h3>
+            <h3 className="font-bold text-2xl">Faster Property Closing</h3>
             <p>
               Properties undergo swift closure facilitated by ongoing bidding
               and negotiations, expediting the transaction process.
             </p>
           </div>
+        </div>
+      </div>
+
+      <div className="bg-[#FAF3F0] px-16 py-8 lg:py-12">
+        <h1 className="text-center text-5xl font-semibold">
+          How Houzez changed lives
+        </h1>
+
+        <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-2">
+          {landingPageCards.map((card) => (
+            <figure className="md:flex bg-white rounded-xl p-8 md:p-0">
+              <img
+                className="object-cover w-24 h-24 md:w-48 md:h-auto mx-auto  md:rounded-l-md"
+                src={card.url}
+                alt={card.author}
+              />
+              <div className="pt-8 md:p-8 text-center md:text-left space-y-4">
+                <blockquote>
+                  <p className="text-lg font-medium">{card.subtitle}</p>
+                </blockquote>
+                <figcaption className="font-medium">
+                  <div className="text-[#0C356A]">{card.author} </div>
+                  <div className="text-[#0C356A]">{card.location}</div>
+                </figcaption>
+              </div>
+            </figure>
+          ))}
         </div>
       </div>
     </>
