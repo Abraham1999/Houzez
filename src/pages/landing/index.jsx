@@ -9,9 +9,9 @@ import { landingPageCards } from "../../utils/data";
 
 const LandingPage = () => {
   const [images] = useState([
-    { url: "landing1.jpeg", price: "£5,404/mo", interest: "3.5%" },
+    { url: "landing1.jpeg", price: "£5,400/mo", interest: "3.5%" },
     { url: "landing2.jpeg", price: "£3,500/mo", interest: "4.0%" },
-    { url: "landing3.jpeg", price: "£1,900/mo", interest: "3.%" },
+    { url: "landing3.jpeg", price: "£1,900/mo", interest: "2.3%" },
   ]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 

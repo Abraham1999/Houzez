@@ -95,7 +95,7 @@ export const landingPageCards = [
     id: 2,
     url: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     subtitle:
-      '"I had an outstanding experience with Houzez. They listened attentively to my preferences and found me the perfect rental property within my budget. I highly recommend their services for anyone seeking a hassle-free renting process."',
+      '"I had an outstanding experience with Houzez. They listened attentively to my preferences and found me the perfect property within my budget. I highly recommend their services for anyone seeking a hassle-free renting process."',
     author: "Michael Kingswell",
     location: "Peterson, Edingburg.",
   },
@@ -127,7 +127,7 @@ export const landingPageCards = [
     id: 6,
     url: "https://images.pexels.com/photos/3770254/pexels-photo-3770254.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     subtitle:
-      '"Choosing Houzez was the best decision I made while searching for a rental property. Their expertise and guidance simplified the otherwise daunting process. I am grateful for their support and highly recommend their services."',
+      '"Choosing Houzez was the best decision I made while searching for a property. Their expertise and guidance simplified the otherwise daunting process. I am grateful for their support and highly recommend their services."',
     author: "Merissa Collie",
     location: "Danestone, Aberdeen.",
   },

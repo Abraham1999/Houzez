@@ -2,9 +2,8 @@ import React from "react";
 
 function RadioButton({ name, value, label, onChange, checked }) {
   return (
-    <div className="">
+    <div>
       <input
-        className=""
         type="radio"
         value={value}
         id={name}

@@ -50,9 +50,9 @@ const LoginPage = () => {
   }, [navigate]);
 
   return (
-    <form>
-      <div className="">
-        <div className="">
+    <div className="py-16 w-full max-w-2xl justify-center mx-auto  ">
+      <form className="bg-white rounded px-8 pt-6 pb-8 mb-4">
+        <div>
           <Input
             type="email"
             label="Email Address"
@@ -63,7 +63,7 @@ const LoginPage = () => {
           />
         </div>
 
-        <div className="">
+        <div className="mt-4">
           <Input
             type="text"
             label="Password"
@@ -73,16 +73,16 @@ const LoginPage = () => {
             placeholder="Please enter your password"
           />
         </div>
-      </div>
-      <div className="">
-        <Button
-          type="submit"
-          className=""
-          onClick={handleSubmit}
-          text="Login"
-        />
-      </div>
-    </form>
+        <div className="flex items-center justify-between mt-4">
+          <Button
+            type="submit"
+            className="w-full bg-[#0C356A] hover:bg-[#0C356A] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            onClick={handleSubmit}
+            text="Login"
+          />
+        </div>
+      </form>
+    </div>
   );
 };
 export default LoginPage;

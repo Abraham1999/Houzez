@@ -101,109 +101,111 @@ const RegisterPage = () => {
   }, [navigate, user, userCreated]);
 
   return (
-    <form>
-      <div className="">
-        <div className="">
-          <Input
-            type="text"
-            label="First Name"
-            name="firstName"
-            error={firstNameError}
-            innerRef={firstNameRef}
-            placeholder="Please enter your first name"
-          />
-        </div>
-        <div className="">
-          <Input
-            type="text"
-            label="Last Name"
-            name="lastName"
-            error={lastNameError}
-            innerRef={lastNameRef}
-            placeholder="Please enter your last name"
-          />
-        </div>
-        <div className="">
-          <Input
-            type="email"
-            label="Email Address"
-            name="email"
-            error={emailError}
-            innerRef={emailRef}
-            placeholder="Please enter your email address"
-          />
-        </div>
-        <div className="">
-          <Input
-            type="text"
-            label="Address"
-            name="address"
-            error={addressError}
-            innerRef={addressRef}
-            placeholder="Please enter your address"
-          />
-        </div>
-        <div className="">
-          <Input
-            type="text"
-            label="Post Code"
-            name="postCode"
-            error={postcodeError}
-            innerRef={postcodeRef}
-            placeholder="Please enter your post code"
-          />
-        </div>
-        <div className="">
-          <Input
-            type="text"
-            label="Phone Number"
-            name="phoneNumber"
-            error={phoneError}
-            innerRef={phoneRef}
-            placeholder="Please enter your phone number"
-          />
-        </div>
+    <div className="w-full max-w-2xl justify-center mx-auto">
+      <form className="bg-white rounded px-8 pt-6 pb-8 mb-4">
+        <div>
+          <div>
+            <Input
+              type="text"
+              label="First Name"
+              name="firstName"
+              error={firstNameError}
+              innerRef={firstNameRef}
+              placeholder="Please enter your first name"
+            />
+          </div>
+          <div className="mt-4">
+            <Input
+              type="text"
+              label="Last Name"
+              name="lastName"
+              error={lastNameError}
+              innerRef={lastNameRef}
+              placeholder="Please enter your last name"
+            />
+          </div>
+          <div className="mt-4">
+            <Input
+              type="email"
+              label="Email Address"
+              name="email"
+              error={emailError}
+              innerRef={emailRef}
+              placeholder="Please enter your email address"
+            />
+          </div>
+          <div className="mt-4">
+            <Input
+              type="text"
+              label="Address"
+              name="address"
+              error={addressError}
+              innerRef={addressRef}
+              placeholder="Please enter your address"
+            />
+          </div>
+          <div className="mt-4">
+            <Input
+              type="text"
+              label="Post Code"
+              name="postCode"
+              error={postcodeError}
+              innerRef={postcodeRef}
+              placeholder="Please enter your post code"
+            />
+          </div>
+          <div className="mt-4">
+            <Input
+              type="text"
+              label="Phone Number"
+              name="phoneNumber"
+              error={phoneError}
+              innerRef={phoneRef}
+              placeholder="Please enter your phone number"
+            />
+          </div>
 
-        <div className="">
-          <RadioButton
-            label="Buyer"
-            name="buyer"
-            onChange={(e) => handleChangeAccountType(e)}
-            value="buyer"
-            checked={accountType === "buyer"}
-          />
-        </div>
+          <div className="mt-4">
+            <RadioButton
+              label="Buyer"
+              name="buyer"
+              onChange={(e) => handleChangeAccountType(e)}
+              value="buyer"
+              checked={accountType === "buyer"}
+            />
+          </div>
 
-        <div className="">
-          <RadioButton
-            label="Seller"
-            name="seller"
-            onChange={(e) => handleChangeAccountType(e)}
-            value="seller"
-            checked={accountType === "seller"}
-          />
-        </div>
+          <div className="mt-4">
+            <RadioButton
+              label="Seller"
+              name="seller"
+              onChange={(e) => handleChangeAccountType(e)}
+              value="seller"
+              checked={accountType === "seller"}
+            />
+          </div>
 
-        <div className="">
-          <Input
-            type="password"
-            label="Password"
-            name="password"
-            error={passwordError}
-            innerRef={passwordRef}
-            placeholder="Please enter your password"
+          <div className="mt-4">
+            <Input
+              type="password"
+              label="Password"
+              name="password"
+              error={passwordError}
+              innerRef={passwordRef}
+              placeholder="Please enter your password"
+            />
+          </div>
+        </div>
+        <div className="flex items-center justify-between mt-8">
+          <Button
+            type="submit"
+            className="w-full bg-[#0C356A] hover:bg-[#0C356A] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            onClick={handleSubmit}
+            text="Register"
           />
         </div>
-      </div>
-      <div className="">
-        <Button
-          type="submit"
-          className=""
-          onClick={handleSubmit}
-          text="Register"
-        />
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 export default RegisterPage;

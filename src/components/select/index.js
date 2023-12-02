@@ -2,7 +2,7 @@ import React from "react";
 
 const Select = ({ label, name, value, options, onChange }) => {
   return (
-    <div className="">
+    <div>
       <label htmlFor={name}>{label}</label>
       <select
         id={name}

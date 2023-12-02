@@ -79,7 +79,7 @@ function Footer() {
 
       <div className="px-8 mx-6 py-10 text-center md:text-left">
         <div className="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          <div className="">
+          <div>
             <img
               src={require("../assets/images/houzez.png")}
               alt="Houzez"
@@ -90,7 +90,7 @@ function Footer() {
               Make one of our houzez, your home!
             </h6>
           </div>
-          <div className="">
+          <div>
             <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
               Products
             </h6>
@@ -102,7 +102,7 @@ function Footer() {
               </p>
             ))}
           </div>
-          <div className="">
+          <div>
             <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
               Useful links
             </h6>
