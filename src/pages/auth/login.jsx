@@ -3,7 +3,7 @@ import Input from "../../components/input";
 import Button from "../../components/button";
 import { validateEmail } from "../../utils/helpers";
 import { loginUserHandler } from "../../services/actions/users";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -81,6 +81,12 @@ const LoginPage = () => {
             text="Login"
           />
         </div>
+        <p className="pt-2">
+          Don't have an account?{" "}
+          <Link to="/register" className="underline text-blue-400">
+            Create account
+          </Link>
+        </p>
       </form>
     </div>
   );

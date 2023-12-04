@@ -39,6 +39,13 @@ export const gardenNumberOptions = [
   { label: 3, value: 3 },
 ];
 
+export const limitOptions = [
+  { label: "All", value: "all" },
+  { label: 5, value: 5 },
+  { label: 10, value: 10 },
+  { label: 20, value: 20 },
+];
+
 export const propertyImages = [
   {
     id: 1,

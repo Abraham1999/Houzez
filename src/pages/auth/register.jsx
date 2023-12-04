@@ -5,7 +5,7 @@ import RadioButton from "../../components/radio";
 import { validateEmail } from "../../utils/helpers";
 import { addUserHandler } from "../../services/actions/users";
 import { usersReducer } from "../../services/reducers/users";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -204,6 +204,12 @@ const RegisterPage = () => {
             text="Register"
           />
         </div>
+        <p className="pt-2">
+          Already have an account?{" "}
+          <Link to="/login" className="underline text-blue-400">
+            Login
+          </Link>
+        </p>
       </form>
     </div>
   );

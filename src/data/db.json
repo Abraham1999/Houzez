@@ -9,7 +9,8 @@
       "phone": "123454",
       "password": "12345",
       "accountType": "seller",
-      "id": 1
+      "id": 1,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
     },
     {
       "firstName": "Josh",
@@ -20,18 +21,116 @@
       "phone": "123454",
       "password": "12345",
       "accountType": "buyer",
-      "id": 2
+      "id": 2,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
     },
     {
-      "firstName": "Test",
-      "lastName": "User",
+      "firstName": "Jen",
+      "lastName": "Quay",
+      "email": "jen@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "buyer",
+      "id": 3,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
+    },
+    {
+      "firstName": "Pel",
+      "lastName": "Lew",
+      "email": "lew@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "buyer",
+      "id": 4,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
+    },
+    {
+      "firstName": "Limpson",
+      "lastName": "Brow",
       "email": "test3@gmail.com",
       "address": "32 Dundee Road",
       "postcode": "DR 234",
       "phone": "123454",
       "password": "12345",
       "accountType": "buyer",
-      "id": 3
+      "id": 5,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
+    },
+    {
+      "firstName": "Serde",
+      "lastName": "Awes",
+      "email": "Serde@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "buyer",
+      "id": 6,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
+    },
+    {
+      "firstName": "Nell",
+      "lastName": "Pirld",
+      "email": "pirlo@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "buyer",
+      "id": 7,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
+    },
+    {
+      "firstName": "Yudge",
+      "lastName": "Heold",
+      "email": "eruge@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "buyer",
+      "id": 8,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
+    },
+    {
+      "firstName": "Low",
+      "lastName": "Kerk",
+      "email": "test9@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "buyer",
+      "id": 9,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
+    },
+    {
+      "firstName": "Andrew",
+      "lastName": "Lorre",
+      "email": "test10@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "buyer",
+      "id": 10,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
+    },
+    {
+      "firstName": "Barry",
+      "lastName": "Drew",
+      "email": "test11@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "buyer",
+      "id": 11,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
     }
   ],
   "property": [

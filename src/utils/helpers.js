@@ -13,3 +13,28 @@ export const validateEmail = (value) => {
 };
 
 export const UserContext = createContext();
+
+export const generatInitials = (firstName, lastName) => {
+  const firstNameInitial = firstName.slice(0, 1);
+  const lastNameInitial = lastName.slice(0, 1);
+  const initials = firstNameInitial + lastNameInitial;
+  return initials;
+};
+
+export const filterData = (data, limit, searchTerm) => {
+  switch (true) {
+    case limit === "all" && searchTerm === "":
+      return data;
+    case searchTerm !== "":
+      return data.filter(
+        (data) =>
+          data.firstName.includes(searchTerm) ||
+          data.lastName.includes(searchTerm) ||
+          data.email.includes(searchTerm)
+      );
+    case limit !== "all":
+      return data.slice(0, limit);
+    default:
+      return data;
+  }
+};
