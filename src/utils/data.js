@@ -46,6 +46,43 @@ export const limitOptions = [
   { label: 20, value: 20 },
 ];
 
+export const propertyTypeFilterOptions = [
+  { label: "Type", value: "Type" },
+  { label: "Detached", value: "Detached" },
+  { label: "Semi-Detached", value: "Semi-Detached" },
+  { label: "Mansion", value: "Mansion" },
+  { label: "Apartment", value: "Apartment" },
+  { label: "Cottage", value: "Cottage" },
+  { label: "Bungalow", value: "Bungalow" },
+];
+
+export const bathroomFilterOptions = [
+  { label: "Bathrooms", value: 'Bathrooms' },
+  { label: "1 bathroom", value: 1 },
+  { label: "2 bathrooms", value: 2 },
+  { label: "3 bathrooms", value: 3 },
+  { label: "4 bathrooms", value: 4 },
+  { label: "5 bathrooms", value: 5 },
+  { label: "6 bathrooms", value: 6 },
+  { label: "7 bathrooms", value: 7 },
+];
+export const bedroomFilterOptions = [
+  { label: "Bedrooms", value: 'Bedrooms' },
+  { label: "1 bedroom", value: 1 },
+  { label: "2 bedrooms", value: 2 },
+  { label: "3 bedrooms", value: 3 },
+  { label: "4 bedrooms", value: 4 },
+  { label: "5 bedrooms", value: 5 },
+  { label: "6 bedrooms", value: 6 },
+  { label: "7 bedrooms", value: 7 },
+];
+export const gardenFilterOptions = [
+  { label: 0, value: 0 },
+  { label: 1, value: 1 },
+  { label: 2, value: 2 },
+  { label: 3, value: 3 },
+];
+
 export const propertyImages = [
   {
     id: 1,

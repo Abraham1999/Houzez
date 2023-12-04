@@ -123,103 +123,105 @@ const AddProperty = () => {
   }, [navigate]);
 
   return (
-    <form>
-      <div className="">
+    <div className="py-16 w-full max-w-2xl justify-center mx-auto  ">
+      <form className="bg-white rounded px-8 pt-6 pb-8 mb-4">
         <div className="">
-          <Input
-            type="text"
-            value={existingProperty === null ? "" : existingProperty.address}
-            label="Address"
-            name="address"
-            error={addressError}
-            innerRef={addressRef}
-            placeholder="Please enter the property address"
-          />
-        </div>
+          <div className="">
+            <Input
+              type="text"
+              value={existingProperty === null ? "" : existingProperty.address}
+              label="Address"
+              name="address"
+              error={addressError}
+              innerRef={addressRef}
+              placeholder="Please enter the property address"
+            />
+          </div>
 
-        <div className="">
-          <Input
-            type="text"
-            value={existingProperty === null ? "" : existingProperty.postcode}
-            label="Post Code"
-            name="postcode"
-            error={postCodeError}
-            innerRef={postcodeRef}
-            placeholder="Please enter the property postcode"
-          />
-        </div>
+          <div className="mt-4">
+            <Input
+              type="text"
+              value={existingProperty === null ? "" : existingProperty.postcode}
+              label="Post Code"
+              name="postcode"
+              error={postCodeError}
+              innerRef={postcodeRef}
+              placeholder="Please enter the property postcode"
+            />
+          </div>
 
-        <div className="">
-          <Input
-            type="text"
-            value={
-              existingProperty === null ? "" : existingProperty.description
-            }
-            label="Description"
-            name="description"
-            error={descriptionError}
-            innerRef={descriptionRef}
-            placeholder="Please enter the property description"
-          />
-        </div>
-        <div className="">
-          <Input
-            type="text"
-            value={existingProperty === null ? "" : existingProperty.price}
-            label="Price(£)"
-            name="price"
-            error={priceError}
-            innerRef={priceRef}
-            placeholder="Please enter the property price"
-          />
-        </div>
+          <div className="mt-4">
+            <Input
+              type="text"
+              value={
+                existingProperty === null ? "" : existingProperty.description
+              }
+              label="Description"
+              name="description"
+              error={descriptionError}
+              innerRef={descriptionRef}
+              placeholder="Please enter the property description"
+            />
+          </div>
+          <div className="mt-4">
+            <Input
+              type="text"
+              value={existingProperty === null ? "" : existingProperty.price}
+              label="Price(£)"
+              name="price"
+              error={priceError}
+              innerRef={priceRef}
+              placeholder="Please enter the property price"
+            />
+          </div>
 
-        <div>
-          <Select
-            label="Type"
-            name="type"
-            options={propertyTypeOptions}
-            value={propertyType}
-            onChange={(e) => setPropertyType(e.target.value)}
+          <div className="mt-4">
+            <Select
+              label="Type"
+              name="type"
+              options={propertyTypeOptions}
+              value={propertyType}
+              onChange={(e) => setPropertyType(e.target.value)}
+            />
+          </div>
+          <div className="mt-4">
+            <Select
+              label="Bathroom"
+              name="bathroom"
+              options={bathroomNumberOptions}
+              value={bathroomNumber}
+              onChange={(e) => setBathroomNumber(e.target.value)}
+            />
+          </div>
+          <div className="mt-4">
+            <Select
+              label="Bedroom"
+              name="bedroom"
+              options={bedroomNumberOptions}
+              value={bedroomNumber}
+              onChange={(e) => setBedroomNumber(e.target.value)}
+            />
+          </div>
+          <div className="mt-4">
+            <Select
+              label="Garden"
+              name="garden"
+              options={gardenNumberOptions}
+              value={gardenNumber}
+              onChange={(e) => setGardenNumber(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="flex items-center justify-between mt-4">
+          <Button
+            type="submit"
+            className="w-full bg-[#0C356A] hover:bg-[#0C356A] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            onClick={handleSubmit}
+            text="Submit"
           />
         </div>
-        <div>
-          <Select
-            label="Bathroom"
-            name="bathroom"
-            options={bathroomNumberOptions}
-            value={bathroomNumber}
-            onChange={(e) => setBathroomNumber(e.target.value)}
-          />
-        </div>
-        <div>
-          <Select
-            label="Bedroom"
-            name="bedroom"
-            options={bedroomNumberOptions}
-            value={bedroomNumber}
-            onChange={(e) => setBedroomNumber(e.target.value)}
-          />
-        </div>
-        <div>
-          <Select
-            label="Garden"
-            name="garden"
-            options={gardenNumberOptions}
-            value={gardenNumber}
-            onChange={(e) => setGardenNumber(e.target.value)}
-          />
-        </div>
-      </div>
-      <div className="">
-        <Button
-          type="submit"
-          className=""
-          onClick={handleSubmit}
-          text="Submit"
-        />
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 export default AddProperty;

@@ -21,9 +21,20 @@ export const generatInitials = (firstName, lastName) => {
   return initials;
 };
 
-export const filterData = (data, limit, searchTerm) => {
+export const filterData = (
+  data,
+  limit,
+  searchTerm,
+  bedroom,
+  type,
+  bathroom
+) => {
   switch (true) {
-    case limit === "all" && searchTerm === "":
+    case limit === "all" &&
+      searchTerm === "" &&
+      bedroom === "Bedrooms" &&
+      bathroom === "Bathrooms" &&
+      type === "Type":
       return data;
     case searchTerm !== "":
       return data.filter(
@@ -34,6 +45,12 @@ export const filterData = (data, limit, searchTerm) => {
       );
     case limit !== "all":
       return data.slice(0, limit);
+    case bedroom !== "Bedrooms":
+      return data.filter((property) => property.bedrooms === bedroom);
+    case bathroom !== "Bathrooms":
+      return data.filter((property) => property.bathrooms === bathroom);
+    case type !== "Type":
+      return data.filter((property) => property.type === type);
     default:
       return data;
   }

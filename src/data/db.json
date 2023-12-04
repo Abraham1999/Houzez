@@ -141,15 +141,49 @@
       },
       "sellerId": 1,
       "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT",
-      "address": "1213 Fake Street",
-      "postcode": "123 FS1",
-      "description": "Beautiful house in uk",
-      "price": "392000",
+      "address": "1213 Fake Street, Dundee",
+      "postcode": "DD123",
+      "description": "Beautiful house in Dundee, United Kindgom, with a decorative style and high technology devices embedded into it.",
+      "price": "392,000",
       "type": "Bungalow",
       "bathrooms": "5",
       "bedrooms": "6",
       "garden": "3",
       "id": 1
+    },
+    {
+      "image": {
+        "id": 3,
+        "url": "https://images.pexels.com/photos/2587054/pexels-photo-2587054.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      },
+      "sellerId": 1,
+      "createdAt": "Mon, 04 Dec 2023 14:22:32 GMT",
+      "address": "542 Lionsfield avenue, Livingwaters, Aberdeen ",
+      "postcode": "AB43 LAL",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "price": "343,000",
+      "type": "Mansion",
+      "bathrooms": "7",
+      "bedrooms": "5",
+      "garden": "1",
+      "id": 2
+    },
+    {
+      "image": {
+        "id": 2,
+        "url": "https://images.pexels.com/photos/1974596/pexels-photo-1974596.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      },
+      "sellerId": 1,
+      "createdAt": "Mon, 04 Dec 2023 14:23:28 GMT",
+      "address": "23 Provost road, Inverness",
+      "postcode": "PR232",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "price": "435,939",
+      "type": "Bungalow",
+      "bathrooms": "2",
+      "bedrooms": "2",
+      "garden": "1",
+      "id": 3
     }
   ],
   "booking": []
