@@ -2,7 +2,12 @@ import { useContext, useEffect, useReducer, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { UserContext } from "../../utils/helpers";
 import { propertyReducer } from "../../services/reducers/property";
-import { deleteProperty, getProperty } from "../../services/actions/properties";
+import { usersReducer } from "../../services/reducers/users";
+import {
+  deleteProperty,
+  editPropertyHandler,
+  getProperty,
+} from "../../services/actions/properties";
 import Button from "../../components/button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -10,12 +15,17 @@ import "react-datepicker/dist/react-datepicker-cssmodules.css";
 import {
   addBookingHandler,
   deleteBooking,
+  deleteMultipleBookings,
   editBookingHandler,
   getBooking,
 } from "../../services/actions/bookings";
 import { bookingReducer } from "../../services/reducers/bookings";
 import Select from "../../components/select";
 import { statusTypes } from "../../utils/data";
+import { getUsers } from "../../services/actions/users";
+import Tag from "../../components/Tag";
+import { TbBed } from "react-icons/tb";
+import { GiShower, GiTreeBranch } from "react-icons/gi";
 
 function PropertyByIdPage() {
   const navigate = useNavigate();
@@ -56,12 +66,12 @@ function PropertyByIdPage() {
   const [buyers, dispatchGetBuyerList] = useReducer(usersReducer, []);
 
   useEffect(() => {
-    dispatchGetBuyerList(dispatch, "buyer");
+    getUsers(dispatchGetBuyerList, "buyer");
   }, []);
 
-  const buyersForArray = buyers.map(buyer => {
-    return {label}
-  })
+  const buyersForArray = buyers.map((buyer) => {
+    return { label: buyer.firstName + " " + buyer.lastName, value: buyer.id };
+  });
 
   const handleDeleteProperty = () => {
     if (!loading && property[0].sellerId === user[0].id) {
@@ -112,13 +122,26 @@ function PropertyByIdPage() {
     deleteBooking(dispatch, booking[0].id);
   };
 
-  const handleChangeStatus = () => {};
-
-  console.log(property);
+  const handleChangeStatus = (propertyId) => {
+    editPropertyHandler(
+      {
+        buyerId: propertyBuyer,
+        status: status,
+      },
+      propertyId,
+      dispatch
+    );
+    setShowBookingsForm(false);
+    setLoading(true);
+    deleteMultipleBookings(dispatchBooking, propertyId);
+    setLoading(false);
+    setShowChangeStatusForm(!showChangeStatusForm);
+    navigate("/property");
+  };
 
   return (
     <div className="container mx-auto px-8 md:px-20  py-4">
-      {loading ? (
+      {loading || property.length === 0 ? (
         <h1 className="text-center py-48 text-9xl text-[#0C356A]">
           Loading...
         </h1>
@@ -128,7 +151,7 @@ function PropertyByIdPage() {
             property.length > 0 &&
             user[0].accountType === "seller" &&
             property[0].sellerId === user[0].id && (
-              <div className="space-x-5 flex justify-end">
+              <div className="pb-8 space-x-5 flex justify-end">
                 <Button
                   type="button"
                   className=" bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -142,19 +165,94 @@ function PropertyByIdPage() {
                 >
                   Edit Property
                 </Link>
-                <Button
-                  type="button"
-                  className=" bg-teal-700 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  onClick={() => setShowChangeStatusForm(!showChangeStatusForm)}
-                  text="Change Status"
-                />
               </div>
             )}
 
           <div>
-            <div>Property Content goes here</div>
-            <p>All added bookings goes here</p>
-            <p>Make property sold</p>
+            <div className="">
+              <img
+                src={property[0].image.url}
+                alt={property[0].address}
+                className="rounded-lg"
+              />
+            </div>
+
+            <div className="py-4">
+              <Tag
+                value={property[0].status}
+                extraStyle="mt-4 bg-teal-500 w-24 text-center"
+              />
+
+              <h1 className="text-4xl font-bold pt-4 pb-2">
+                £{property[0].price}
+              </h1>
+              <p className="text-xl font-semibold text-black">
+                {property[0].bedrooms} bed {property[0].type} house for sale
+              </p>
+              <p className="text-lg font-normal text-gray-600">
+                {property[0].address} {property[0].postcode}
+              </p>
+              <p className="text-xl font-semibold py-3">
+                {property[0].description}
+              </p>
+
+              <div className="flex space-x-4 pb-4 pt-1">
+                <div className="flex space-x-1">
+                  <TbBed
+                    style={{
+                      color: "black",
+                      fontSize: "25px",
+                      fontWeight: "normal",
+                    }}
+                  />
+                  <p>{property[0].bedrooms} bd</p>
+                </div>
+
+                <div className="flex space-x-1">
+                  <GiShower
+                    style={{
+                      color: "black",
+                      fontSize: "25px",
+                      fontWeight: "normal",
+                    }}
+                  />
+                  <p>{property[0].bathrooms} ba</p>
+                </div>
+                <div className="flex space-x-1">
+                  <GiTreeBranch
+                    style={{
+                      color: "black",
+                      fontSize: "25px",
+                      fontWeight: "normal",
+                    }}
+                  />
+                  <p>{property[0].garden} gd</p>
+                </div>
+              </div>
+
+              <p className="text-lg font-normal">
+                Property added on {property[0].createdAt}
+              </p>
+            </div>
+
+            {user !== null &&
+              property.length > 0 &&
+              user[0].accountType === "seller" &&
+              property[0].sellerId === user[0].id && (
+                <div className="">
+                  <h1 className="text-2xl border-b border-gray-300 py-2">
+                    Manage property status
+                  </h1>
+                  <Button
+                    type="button"
+                    className="mt-6 bg-teal-700 hover:bg-teal-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    onClick={() =>
+                      setShowChangeStatusForm(!showChangeStatusForm)
+                    }
+                    text="Change Status"
+                  />
+                </div>
+              )}
 
             {showChangeStatusForm && (
               <div>
@@ -173,17 +271,17 @@ function PropertyByIdPage() {
                     <Select
                       label="Sold to"
                       name="buyer"
-                      options={[]}
+                      options={buyersForArray}
                       value={propertyBuyer}
                       onChange={(e) => setPropertyBuyer(e.target.value)}
                     />
                   </div>
                 )}
-                <div>
+                <div className="mt-4">
                   <Button
                     type="button"
-                    className=" bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    onClick={() => handleChangeStatus()}
+                    className="bg-[#0C356A] hover:bg-[#0C356A] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    onClick={() => handleChangeStatus(property[0].id)}
                     text="Submit"
                   />
                 </div>
@@ -192,30 +290,74 @@ function PropertyByIdPage() {
 
             {user !== null && user[0].accountType === "buyer" && (
               <div>
-                <Button
-                  type="button"
-                  className="bg-[#0C356A] hover:bg-[#0C356A] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  onClick={handleShowBookingForm}
-                  text={booking.length === 0 ? "Add booking" : "Edit booking"}
-                />
+                <div className="">
+                  <h1 className="text-2xl border-b border-gray-300 py-2">
+                    Manage bookings
+                  </h1>
+
+                  {booking.length === 0 ? (
+                    <div>
+                      <p>No bookings created. Add one below</p>{" "}
+                    </div>
+                  ) : (
+                    <dl className="divide-y divide-gray-100">
+                      <div className="px-4 py-6 flex justify-between">
+                        <dt className="text-lg font-medium leading-6 text-gray-900">
+                          Avaialble Booking
+                        </dt>
+                        <dd className="mt-1 text-lg leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                          {new Date(booking[0].bookingTime).toUTCString()}
+                        </dd>
+                      </div>
+                    </dl>
+                  )}
+
+                  <div className="flex justify-end space-x-4">
+                    {booking.length > 0 &&
+                      user[0].accountType === "buyer" &&
+                      user[0].id === booking[0].buyerId && (
+                        <div>
+                          <div>
+                            <Button
+                              type="submit"
+                              className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                              onClick={handleDeleteBooking}
+                              text="Delete"
+                            />
+                          </div>
+                        </div>
+                      )}
+
+                    <Button
+                      type="button"
+                      className=" bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                      onClick={handleShowBookingForm}
+                      text={
+                        booking.length === 0 ? "Add booking" : "Edit booking"
+                      }
+                    />
+                  </div>
+                </div>
               </div>
             )}
 
             {showBookingsForm && (
               <div>
                 <div>
-                  <div className="relative py-4">
+                  <div className="relative pb-4 w-full">
                     <label
                       htmlFor="viewingDate"
                       className="block text-gray-700 text-sm font-bold mb-2"
                     >
-                      Select date and Time
+                      Select Date and Time
                     </label>
                     <DatePicker
                       selected={viewingDate}
                       dateFormat="Pp"
                       showTimeSelect
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      wrapperClassName="w-full"
+                      id="viewingDate"
+                      className="w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       onChange={(date) => setViewingDate(date)}
                     />
                   </div>
@@ -231,21 +373,6 @@ function PropertyByIdPage() {
                 </div>
               </div>
             )}
-
-            {booking.length > 0 &&
-              user[0].accountType === "buyer" &&
-              user[0].id === booking[0].buyerId && (
-                <div>
-                  <div>
-                    <Button
-                      type="submit"
-                      className="bg-[#0C356A] hover:bg-[#0C356A] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                      onClick={handleDeleteBooking}
-                      text="Delete"
-                    />
-                  </div>
-                </div>
-              )}
           </div>
         </>
       )}

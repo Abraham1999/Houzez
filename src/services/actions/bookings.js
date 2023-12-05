@@ -90,3 +90,20 @@ export const editBookingHandler = (
       dispatch({ type: "UPDATE_BOOKING", payload: updatedBooking });
     });
 };
+
+export const deleteMultipleBookings = async (dispatch, id) => {
+  const response = await fetch(
+    `http://localhost:5000/booking?propertyId=${id}`,
+    {
+      method: "GET",
+    }
+  );
+  const data = await response.json();
+  if (!response.ok) {
+    throw response.status;
+  } else {
+    return data.map((item) => {
+      deleteBooking(dispatch, item.id);
+    });
+  }
+};

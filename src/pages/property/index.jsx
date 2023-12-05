@@ -49,7 +49,6 @@ const PropertiesPage = () => {
     bathroomFilter
   );
 
-  console.log(bedroomFilter);
   return (
     <div className="container mx-auto px-8 md:px-20  py-4">
       <div>
@@ -72,6 +71,7 @@ const PropertiesPage = () => {
         setBedroomFilter={setBedroomFilter}
         setBathroomFilter={setBathroomFilter}
         setTypeFilter={setTypeFilter}
+        searchPlaceHolder="Search"
       />
 
       {filteredData.map((property) => (
@@ -89,7 +89,10 @@ const PropertiesPage = () => {
                     <h2 className="font-bold text-xl md:text-3xl mb-2 text-black">
                       £{property.price}
                     </h2>
-                    <Tag value={property.status} background="bg-teal-500" />
+                    <Tag
+                      value={property.status}
+                      extraStyle="bg-teal-500 float-right"
+                    />
                   </div>
                   <div className="flex space-x-4 pb-4 pt-1">
                     <div className="flex space-x-1">

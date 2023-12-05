@@ -1,5 +1,9 @@
 const NotFoundPage = () => {
-  return <div>404 Page</div>;
+  return (
+    <div className=" text-9xl text-bold mx-auto my-auto">
+      This HOUZE does not exist{" "}
+    </div>
+  );
 };
 
 export default NotFoundPage;

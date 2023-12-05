@@ -51,7 +51,7 @@ const BookingsPage = () => {
             setCurrentDataList={setLimit}
             setSearchBox={setSearchBox}
             source="common"
-            searchPlaceHolder="Search by address, time or postcode"
+            searchPlaceHolder="Search"
           />
 
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">

@@ -40,7 +40,7 @@ const SellersPage = () => {
             setCurrentDataList={setLimit}
             setSearchBox={setSearchBox}
             source="common"
-            searchPlaceHolder="Search by name or email"
+            searchPlaceHolder="Search"
           />
 
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
