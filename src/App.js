@@ -16,6 +16,7 @@ import { getUserByEmail } from "./services/actions/users";
 import AddProperty from "./pages/property/add";
 import PropertyByIdPage from "./pages/property/id";
 import Footer from "./layout/Footer";
+import SellerId from "./pages/seller/id";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -30,23 +31,27 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen">
-    <UserContext.Provider value={user}>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="bookings" element={<BookingsPage />} />
-        <Route path="property" element={<PropertiesPage />} />
-        <Route path="property/:id" element={<PropertyByIdPage />} />
-        <Route path="property/add" element={<AddProperty />} />
-        <Route path="sellers" element={<SellersPage />} />
-        <Route path="buyers" element={<BuyersPage />} />
-        <Route path="property/:propertyId/booking" element={<BookingsPage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-      <Footer />
-    </UserContext.Provider>
+      <UserContext.Provider value={user}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="bookings" element={<BookingsPage />} />
+          <Route path="property" element={<PropertiesPage />} />
+          <Route path="property/:id" element={<PropertyByIdPage />} />
+          <Route path="property/add" element={<AddProperty />} />
+          <Route path="sellers" element={<SellersPage />} />
+          <Route path="sellers/:id" element={<SellerId />} />
+          <Route path="buyers" element={<BuyersPage />} />
+          <Route
+            path="property/:propertyId/booking"
+            element={<BookingsPage />}
+          />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+        <Footer />
+      </UserContext.Provider>
     </div>
   );
 }
