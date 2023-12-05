@@ -1,5 +1,5 @@
 import { useContext, useEffect, useReducer, useState } from "react";
-import { UserContext, filterData } from "../../utils/helpers";
+import { UserContext, filterPropertyData } from "../../utils/helpers";
 import { Link, useNavigate } from "react-router-dom";
 import { propertyReducer } from "../../services/reducers/property";
 import { getProperties } from "../../services/actions/properties";
@@ -12,6 +12,7 @@ import {
   limitOptions,
   propertyTypeFilterOptions,
 } from "../../utils/data";
+import Tag from "../../components/Tag";
 
 const PropertiesPage = () => {
   const navigate = useNavigate();
@@ -31,21 +32,22 @@ const PropertiesPage = () => {
   const [bedroomFilter, setBedroomFilter] = useState(
     bedroomFilterOptions[0].value
   );
-  const [typeFilter, setTypeFilter] = useState(propertyTypeFilterOptions[0].value);
+  const [typeFilter, setTypeFilter] = useState(
+    propertyTypeFilterOptions[0].value
+  );
   const [bathroomFilter, setBathroomFilter] = useState(
     bathroomFilterOptions[0].value
   );
   const [searchBox, setSearchBox] = useState("");
 
-  const filteredData = filterData(
+  const filteredData = filterPropertyData(
     properties,
     limit,
     searchBox,
     bedroomFilter,
     typeFilter,
-    bathroomFilter,
+    bathroomFilter
   );
-
 
   console.log(bedroomFilter);
   return (
@@ -76,16 +78,19 @@ const PropertiesPage = () => {
         <div className="py-6" key={property.id}>
           <Link to={`/property/${property.id}`}>
             <div className="">
-              <div className="rounded-lg shadow-lg md:flex">
+              <div className="rounded-lg shadow-lg border md:flex">
                 <img
                   src={property.image.url}
                   alt={property.address}
                   className="max-w-1/3 min-w-1/3 w-full md:w-64 object-cover relative rounded-l-none md:rounded-l-lg rounded-t-lg md:rounded-t-none rounded-tl-lg md:rounded-tl-lg"
                 />
-                <div className="p-6">
-                  <h2 className="font-bold text-xl md:text-3xl mb-2 text-black">
-                    £{property.price}
-                  </h2>
+                <div className="p-6 w-full">
+                  <div className="flex justify-between">
+                    <h2 className="font-bold text-xl md:text-3xl mb-2 text-black">
+                      £{property.price}
+                    </h2>
+                    <Tag value={property.status} background="bg-teal-500" />
+                  </div>
                   <div className="flex space-x-4 pb-4 pt-1">
                     <div className="flex space-x-1">
                       <TbBed

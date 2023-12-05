@@ -15,7 +15,7 @@ function Navbar() {
     } else if (user[0].accountType === "seller") {
       return navigation.filter((item) => item.name !== "Sellers");
     } else if (user[0].accountType === "buyer") {
-      return navigation.filter((item) => item.name !== "Buyer");
+      return navigation.filter((item) => item.name !== "Buyers");
     }
   };
 

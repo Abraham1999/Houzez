@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { UserContext, filterData, generatInitials } from "../../utils/helpers";
+import { UserContext, filterData, generateInitials } from "../../utils/helpers";
 import { useContext, useEffect, useReducer, useState } from "react";
 import { usersReducer } from "../../services/reducers/users";
 import { getUsers } from "../../services/actions/users";
@@ -39,6 +39,8 @@ const SellersPage = () => {
             currentDataList={limit}
             setCurrentDataList={setLimit}
             setSearchBox={setSearchBox}
+            source="common"
+            searchPlaceHolder="Search by name or email"
           />
 
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
@@ -46,19 +48,19 @@ const SellersPage = () => {
               <table className="min-w-full leading-normal">
                 <thead>
                   <tr>
-                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider">
                       Full Name
                     </th>
-                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider">
                       Address
                     </th>
-                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider">
                       Email
                     </th>
-                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider">
                       Created at
                     </th>
-                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"></th>
+                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -68,7 +70,7 @@ const SellersPage = () => {
                         <div className="flex items-center">
                           <div className="bg-[#0C356A] text-center rounded-full">
                             <p className="px-4 py-4 text-center text-white text-sm">
-                              {generatInitials(
+                              {generateInitials(
                                 seller.firstName,
                                 seller.lastName
                               )}

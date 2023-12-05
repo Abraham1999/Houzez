@@ -57,7 +57,7 @@ export const propertyTypeFilterOptions = [
 ];
 
 export const bathroomFilterOptions = [
-  { label: "Bathrooms", value: 'Bathrooms' },
+  { label: "Bathrooms", value: "Bathrooms" },
   { label: "1 bathroom", value: 1 },
   { label: "2 bathrooms", value: 2 },
   { label: "3 bathrooms", value: 3 },
@@ -67,7 +67,7 @@ export const bathroomFilterOptions = [
   { label: "7 bathrooms", value: 7 },
 ];
 export const bedroomFilterOptions = [
-  { label: "Bedrooms", value: 'Bedrooms' },
+  { label: "Bedrooms", value: "Bedrooms" },
   { label: "1 bedroom", value: 1 },
   { label: "2 bedrooms", value: 2 },
   { label: "3 bedrooms", value: 3 },
@@ -189,4 +189,10 @@ export const footerProductLinks = [
   { id: 2, value: "Sellers", href: "sellers" },
   { id: 3, value: "Properties", href: "property" },
   { id: 4, value: "Bookings", href: "bookings" },
+];
+
+export const statusTypes = [
+  { value: "For sale", label: "For sale" },
+  { value: "Sold", label: "Sold" },
+  { value: "Withdrawn", label: "Withdrawn" },
 ];

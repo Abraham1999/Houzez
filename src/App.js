@@ -34,6 +34,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="bookings" element={<BookingsPage />} />
         <Route path="property" element={<PropertiesPage />} />
         <Route path="property/:id" element={<PropertyByIdPage />} />
         <Route path="property/add" element={<AddProperty />} />

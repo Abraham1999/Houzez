@@ -127,7 +127,7 @@ const LandingPage = () => {
 
         <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-2">
           {landingPageCards.map((card) => (
-            <figure className="md:flex bg-white rounded-xl p-8 md:p-0">
+            <figure key={card.id} className="md:flex bg-white rounded-xl p-8 md:p-0">
               <img
                 className="object-cover w-24 h-24 md:w-48 md:h-auto mx-auto  md:rounded-l-md"
                 src={card.url}

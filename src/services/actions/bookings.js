@@ -15,8 +15,8 @@ export const addBookingHandler = (newBooking, dispatch) => {
     });
 };
 
-export const getBookings = (dispatch) => {
-  fetch("http://localhost:5000/booking")
+export const getBookings = (dispatch, userId) => {
+  fetch(`http://localhost:5000/booking?buyerId=${userId}`)
     .then((response) => {
       if (!response.ok) {
         alert("An error has occurred.");
@@ -33,8 +33,8 @@ export const getBookings = (dispatch) => {
     });
 };
 
-export const getBooking = (dispatch, id, setLoading) => {
-  fetch(`http://localhost:5000/booking?id=${id}`)
+export const getBooking = (dispatch, buyerId, id, setLoading) => {
+  fetch(`http://localhost:5000/booking?propertyId=${id}&buyerId=${buyerId}`)
     .then((response) => {
       if (!response.ok) {
         alert("An error has occurred.");
