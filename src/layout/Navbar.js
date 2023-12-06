@@ -1,24 +1,31 @@
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { UserContext, classNames } from "../utils/helpers";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { navigation } from "../utils/data";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import Button from "../components/button";
 
 function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
   const user = useContext(UserContext);
+  const [navigationList, setNavigationList] = useState([]);
 
-  const filteredNavigationList = () => {
+  useEffect(() => {
     if (user === null) {
-      return navigation;
+      setNavigationList(navigation);
     } else if (user[0].accountType === "seller") {
-      return navigation.filter((item) => item.name !== "Sellers");
+      setNavigationList(navigation.filter((item) => item.name !== "Sellers"));
     } else if (user[0].accountType === "buyer") {
-      return navigation.filter((item) => item.name !== "Buyers");
+      setNavigationList(navigation.filter((item) => item.name !== "Buyers"));
     }
-  };
+  }, [user]);
 
+  const handleLogout = () => {
+    localStorage.removeItem("houzez_email");
+    navigate(0);
+  };
   return (
     <Disclosure
       as="nav"
@@ -53,7 +60,7 @@ function Navbar() {
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
-                    {filteredNavigationList().map((item) => (
+                    {navigationList.map((item) => (
                       <Link
                         key={item.name}
                         to={item.href}
@@ -79,12 +86,12 @@ function Navbar() {
                     Get started
                   </Link>
                 ) : (
-                  <Link
-                    to="#"
+                  <Button
+                    onClick={() => handleLogout()}
+                    type="button"
+                    text="Logout"
                     className="font-semibold relative rounded-full border border-[#0C356A] px-2 text-[#0C356A] hover:text-[#0C356A] focus:outline-none focus:ring-2 focus:ring-[#0C356A] focus:ring-offset-2 focus:ring-offset-[#0C356A]"
-                  >
-                    Profile
-                  </Link>
+                  />
                 )}
               </div>
             </div>
@@ -92,7 +99,7 @@ function Navbar() {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
-              {filteredNavigationList().map((item) => (
+              {navigationList.map((item) => (
                 <Disclosure.Button
                   key={item.name}
                   as="a"

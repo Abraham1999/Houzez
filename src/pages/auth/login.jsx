@@ -34,7 +34,7 @@ const LoginPage = () => {
       }).then((data) => {
         if (data.length === 1) {
           localStorage.setItem("houzez_email", data[0].email);
-          navigate("/property");
+          navigate(0);
           clearForm();
         } else {
           alert("Incorrect login details");
@@ -45,12 +45,13 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (localStorage.getItem("houzez_email")) {
-      navigate(-1);
+      navigate("/property");
     }
   }, [navigate]);
 
   return (
-    <div className="py-16 w-full max-w-2xl justify-center mx-auto  ">
+    <div className="py-16 w-full max-w-2xl justify-center mx-auto">
+      <p className="pb-4 text-6xl font-bold text-center">Login</p>
       <form className="bg-white rounded px-8 pt-6 pb-8 mb-4">
         <div>
           <Input

@@ -73,7 +73,7 @@ const PropertiesPage = () => {
       />
 
       {filteredData.map((property) => (
-        <PropertyContainer property={property} />
+        <PropertyContainer property={property} key={property.id} />
       ))}
     </div>
   );

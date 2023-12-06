@@ -155,7 +155,7 @@ function PropertyByIdPage() {
   return (
     <div className="container mx-auto px-8 md:px-20  py-4">
       {loading || property.length === 0 ? (
-       <Loader />
+        <Loader />
       ) : (
         <>
           {user !== null &&
@@ -313,9 +313,12 @@ function PropertyByIdPage() {
                   ) : (
                     <dl className="divide-y divide-gray-100">
                       {sellerPropertyBookings.map((booking) => (
-                        <div className="px-4 py-6 flex justify-between">
+                        <div
+                          className="px-4 py-6 flex justify-between"
+                          key={booking.id}
+                        >
                           <dt className="text-lg font-medium leading-6 text-gray-900">
-                           {booking.buyerName}
+                            {booking.buyerName}
                           </dt>
                           <dd className="mt-1 text-lg leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                             {new Date(booking.bookingTime).toUTCString()}

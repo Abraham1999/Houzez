@@ -8,7 +8,7 @@
       "postcode": "DR 234",
       "phone": "123454",
       "password": "12345",
-      "accountType": "buyer",
+      "accountType": "seller",
       "id": 1,
       "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
     },
@@ -199,7 +199,7 @@
       "bedrooms": "5",
       "garden": "1",
       "status": "For sale",
-      "id": 2
+      "id": 45
     },
     {
       "image": {

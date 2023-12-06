@@ -18,8 +18,6 @@ const SellerId = () => {
   const { id } = useParams();
   const seller = useLocation().state;
 
-  const user = useContext(UserContext);
-
   const [properties, dispatch] = useReducer(propertyReducer, []);
 
   useEffect(() => {
@@ -103,7 +101,7 @@ const SellerId = () => {
       />
 
       {filteredData.map((property) => (
-        <PropertyContainer property={property} />
+        <PropertyContainer property={property} key={property.id} />
       ))}
     </div>
   );
