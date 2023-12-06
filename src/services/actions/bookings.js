@@ -125,3 +125,22 @@ export const getSellerPropertyBookings = (dispatch, userId) => {
       alert(error);
     });
 };
+
+export const getPropertyBookings = (dispatch, id, setLoading) => {
+  fetch(`http://localhost:5000/booking?propertyId=${id}`)
+    .then((response) => {
+      if (!response.ok) {
+        alert("An error has occurred.");
+        throw response.status;
+      } else {
+        return response.json();
+      }
+    })
+    .then((booking) => {
+      dispatch({ type: "GET_BOOKINGS", payload: booking });
+      setLoading(false);
+    })
+    .catch((error) => {
+      alert(error);
+    });
+};

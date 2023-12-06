@@ -18,6 +18,7 @@ import {
   deleteMultipleBookings,
   editBookingHandler,
   getBooking,
+  getPropertyBookings,
   getSellerPropertyBookings,
 } from "../../services/actions/bookings";
 import { bookingReducer } from "../../services/reducers/bookings";
@@ -36,6 +37,10 @@ function PropertyByIdPage() {
 
   const [property, dispatch] = useReducer(propertyReducer, []);
   const [booking, dispatchBooking] = useReducer(bookingReducer, []);
+  const [allPropertyBookings, dispatchAllPropertyBooking] = useReducer(
+    bookingReducer,
+    []
+  );
   const [showBookingsForm, setShowBookingsForm] = useState(false);
   const user = useContext(UserContext);
   const [viewingDate, setViewingDate] = useState(null);
@@ -55,6 +60,11 @@ function PropertyByIdPage() {
   useEffect(() => {
     setLoading(true);
     getBooking(dispatchBooking, user !== null && user[0].id, id, setLoading);
+  }, [id, user]);
+
+  useEffect(() => {
+    setLoading(true);
+    getPropertyBookings(dispatchAllPropertyBooking, id, setLoading);
   }, [id, user]);
 
   useEffect(() => {
@@ -151,6 +161,11 @@ function PropertyByIdPage() {
     setShowChangeStatusForm(!showChangeStatusForm);
     navigate("/property");
   };
+
+  const excludedDates = allPropertyBookings.map((booking) => {
+    const date = new Date(booking.bookingTime);
+    return new Date(0, 0, 0, date.getHours(), date.getMinutes());
+  });
 
   return (
     <div className="container mx-auto px-8 md:px-20  py-4">
@@ -400,6 +415,7 @@ function PropertyByIdPage() {
                       showTimeSelect
                       wrapperClassName="w-full"
                       id="viewingDate"
+                      excludeTimes={excludedDates}
                       className="w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       onChange={(date) => setViewingDate(date)}
                     />
