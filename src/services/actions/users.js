@@ -67,3 +67,21 @@ export const getUsers = (dispatch, type) => {
       alert(error);
     });
 };
+
+export const getAllUsers = (dispatch) => {
+  fetch("http://localhost:5000/users")
+    .then((response) => {
+      if (!response.ok) {
+        alert("An error has occurred.");
+        throw response.status;
+      } else {
+        return response.json();
+      }
+    })
+    .then((users) => {
+      dispatch({ type: "GET_USERS", payload: users });
+    })
+    .catch((error) => {
+      alert(error);
+    });
+};

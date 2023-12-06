@@ -3,7 +3,7 @@ import Input from "../../components/input";
 import Button from "../../components/button";
 import RadioButton from "../../components/radio";
 import { validateEmail } from "../../utils/helpers";
-import { addUserHandler } from "../../services/actions/users";
+import { addUserHandler, getAllUsers } from "../../services/actions/users";
 import { usersReducer } from "../../services/reducers/users";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -27,11 +27,11 @@ const RegisterPage = () => {
   const [postcodeError, setPostcodeError] = useState(false);
   const [accountType, setAccountType] = useState("buyer");
   const [userCreated, setUserCreated] = useState(false);
-
-  const [user, dispatch] = useReducer(usersReducer, []);
   const handleChangeAccountType = (e) => {
     setAccountType(e.target.value);
   };
+  const [user, dispatch] = useReducer(usersReducer, []);
+  const [usersList, dispatchGetAllUsers] = useReducer(usersReducer, []);
 
   const clearForm = () => {
     firstNameRef.current.value = "";
@@ -44,6 +44,15 @@ const RegisterPage = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    let checkIfEmailExists = usersList.filter((user) =>
+      user.email.includes(emailRef.current.value)
+    );
+
+    if (checkIfEmailExists.length > 0) {
+      alert("User Exists, select another email.");
+      return;
+    }
 
     setFirstNameError(!firstNameRef.current.value);
     setLastNameError(!lastNameRef.current.value);
@@ -100,11 +109,16 @@ const RegisterPage = () => {
     }
   }, [navigate, user, userCreated]);
 
+  useEffect(() => {
+    getAllUsers(dispatchGetAllUsers);
+  }, []);
+
   return (
     <div className="w-full max-w-2xl justify-center mx-auto">
       <form className="bg-white rounded px-8 pt-6 pb-8 mb-4">
         <div>
           <div>
+            <p className="pb-4 text-6xl font-bold text-center">Create Account</p>
             <Input
               type="text"
               label="First Name"
