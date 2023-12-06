@@ -3,7 +3,6 @@ export const navigation = [
   { name: "Sellers", href: "/sellers" },
   { name: "Buyers", href: "/buyers" },
   { name: "Bookings", href: "/bookings" },
-  { name: "Contact", href: "#" },
 ];
 
 export const propertyTypeOptions = [
@@ -178,8 +177,8 @@ export const landingPageCards = [
 ];
 
 export const footerLinks = [
-  { id: 1, value: "About us", href: "about-us" },
-  { id: 2, value: "Contact us", href: "contact-us" },
+  { id: 1, value: "About us", href: "#" },
+  { id: 2, value: "Contact us", href: "#" },
   { id: 3, value: "Login", href: "login" },
   { id: 4, value: "Register", href: "register" },
 ];

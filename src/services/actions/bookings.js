@@ -108,8 +108,10 @@ export const deleteMultipleBookings = async (dispatch, id) => {
   }
 };
 
-export const getSellerPropertyBookings = (dispatch, userId) => {
-  fetch(`http://localhost:5000/booking?sellerId=${userId}`)
+export const getSellerPropertyBookings = (dispatch, userId, propertyId) => {
+  fetch(
+    `http://localhost:5000/booking?sellerId=${userId}&propertyId=${propertyId}`
+  )
     .then((response) => {
       if (!response.ok) {
         alert("An error has occurred.");

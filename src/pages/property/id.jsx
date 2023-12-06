@@ -87,8 +87,8 @@ function PropertyByIdPage() {
 
   useEffect(() => {
     if (user !== null && user[0].accountType === "seller")
-      getSellerPropertyBookings(dispatchSellerPropertyBookings, user[0].id);
-  }, [user]);
+      getSellerPropertyBookings(dispatchSellerPropertyBookings, user[0].id, id);
+  }, [id, user]);
 
   const buyersForArray = buyers.map((buyer) => {
     return { label: buyer.firstName + " " + buyer.lastName, value: buyer.id };
@@ -199,7 +199,7 @@ function PropertyByIdPage() {
               <img
                 src={property[0].image.url}
                 alt={property[0].address}
-                className="rounded-lg"
+                className="rounded-lg w-full aspect-[6/3]"
               />
             </div>
 
@@ -314,37 +314,41 @@ function PropertyByIdPage() {
               </div>
             )}
 
-            {user !== null && user[0].accountType === "seller" && (
-              <div>
-                <div className="mt-4">
-                  <h1 className="text-2xl border-b border-gray-300 py-2">
-                    Manage bookings
-                  </h1>
+            {user !== null &&
+              user[0].accountType === "seller" &&
+              user[0].id === property[0].sellerId && (
+                <div>
+                  <div className="mt-4">
+                    <h1 className="text-2xl border-b border-gray-300 py-2">
+                      Manage bookings
+                    </h1>
 
-                  {sellerPropertyBookings.length === 0 ? (
-                    <div>
-                      <p>No bookings created. Add one below</p>{" "}
-                    </div>
-                  ) : (
-                    <dl className="divide-y divide-gray-100">
-                      {sellerPropertyBookings.map((booking) => (
-                        <div
-                          className="px-4 py-6 flex justify-between"
-                          key={booking.id}
-                        >
-                          <dt className="text-lg font-medium leading-6 text-gray-900">
-                            {booking.buyerName}
-                          </dt>
-                          <dd className="mt-1 text-lg leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                            {new Date(booking.bookingTime).toUTCString()}
-                          </dd>
-                        </div>
-                      ))}
-                    </dl>
-                  )}
+                    {sellerPropertyBookings.length === 0 ? (
+                      <div className="pt-6">
+                        <p className="text-center font-bold text-xl">
+                          No bookings on this property.
+                        </p>{" "}
+                      </div>
+                    ) : (
+                      <dl className="divide-y divide-gray-100">
+                        {sellerPropertyBookings.map((booking) => (
+                          <div
+                            className="px-4 py-6 flex justify-between"
+                            key={booking.id}
+                          >
+                            <dt className="text-lg font-medium leading-6 text-gray-900">
+                              {booking.buyerName}
+                            </dt>
+                            <dd className="mt-1 text-lg leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                              {new Date(booking.bookingTime).toUTCString()}
+                            </dd>
+                          </div>
+                        ))}
+                      </dl>
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
 
             {user !== null && user[0].accountType === "buyer" && (
               <div>
