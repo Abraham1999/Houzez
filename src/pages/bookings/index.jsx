@@ -1,9 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import {
-  UserContext,
-  filterBookingData,
-  filterData,
-} from "../../utils/helpers";
+import { UserContext, filterBookingData } from "../../utils/helpers";
 import { useContext, useEffect, useReducer, useState } from "react";
 import FilterComponent from "../../components/filter";
 import { limitOptions } from "../../utils/data";

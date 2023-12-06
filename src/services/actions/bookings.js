@@ -103,7 +103,7 @@ export const deleteMultipleBookings = async (dispatch, id) => {
     throw response.status;
   } else {
     return data.map((item) => {
-      deleteBooking(dispatch, item.id);
+      return deleteBooking(dispatch, item.id);
     });
   }
 };

@@ -1,5 +1,5 @@
-import { useContext, useEffect, useReducer, useState } from "react";
-import { UserContext, filterPropertyData } from "../../utils/helpers";
+import { useEffect, useReducer, useState } from "react";
+import { filterPropertyData } from "../../utils/helpers";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { propertyReducer } from "../../services/reducers/property";
 import { getSellerProperty } from "../../services/actions/properties";

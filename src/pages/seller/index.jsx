@@ -1,13 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
-import { UserContext, filterData, generateInitials } from "../../utils/helpers";
-import { useContext, useEffect, useReducer, useState } from "react";
+import { filterData, generateInitials } from "../../utils/helpers";
+import { useEffect, useReducer, useState } from "react";
 import { usersReducer } from "../../services/reducers/users";
 import { getUsers } from "../../services/actions/users";
 import FilterComponent from "../../components/filter";
 import { limitOptions } from "../../utils/data";
 
 const SellersPage = () => {
-  const user = useContext(UserContext);
   const navigate = useNavigate();
 
   const [sellers, dispatch] = useReducer(usersReducer, []);
