@@ -101,7 +101,8 @@ const BuyersPage = () => {
 
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <Link
-                          to={`/buyer/${buyer.id}`}
+                          to={`/buyers/${buyer.id}`}
+                          state={buyer}
                           className="text-[#0C356A]"
                         >
                           View

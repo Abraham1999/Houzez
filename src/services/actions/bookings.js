@@ -107,3 +107,21 @@ export const deleteMultipleBookings = async (dispatch, id) => {
     });
   }
 };
+
+export const getSellerPropertyBookings = (dispatch, userId) => {
+  fetch(`http://localhost:5000/booking?sellerId=${userId}`)
+    .then((response) => {
+      if (!response.ok) {
+        alert("An error has occurred.");
+        throw response.status;
+      } else {
+        return response.json();
+      }
+    })
+    .then((bookings) => {
+      dispatch({ type: "GET_BOOKINGS", payload: bookings });
+    })
+    .catch((error) => {
+      alert(error);
+    });
+};

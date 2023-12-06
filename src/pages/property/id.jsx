@@ -18,6 +18,7 @@ import {
   deleteMultipleBookings,
   editBookingHandler,
   getBooking,
+  getSellerPropertyBookings,
 } from "../../services/actions/bookings";
 import { bookingReducer } from "../../services/reducers/bookings";
 import Select from "../../components/select";
@@ -26,6 +27,7 @@ import { getUsers } from "../../services/actions/users";
 import Tag from "../../components/Tag";
 import { TbBed } from "react-icons/tb";
 import { GiShower, GiTreeBranch } from "react-icons/gi";
+import Loader from "../../components/loader";
 
 function PropertyByIdPage() {
   const navigate = useNavigate();
@@ -40,6 +42,10 @@ function PropertyByIdPage() {
   const [showChangeStatusForm, setShowChangeStatusForm] = useState(false);
   const [status, setStatus] = useState(null);
   const [propertyBuyer, setPropertyBuyer] = useState(null);
+  const [sellerPropertyBookings, dispatchSellerPropertyBookings] = useReducer(
+    bookingReducer,
+    []
+  );
 
   useEffect(() => {
     setLoading(true);
@@ -69,6 +75,11 @@ function PropertyByIdPage() {
     getUsers(dispatchGetBuyerList, "buyer");
   }, []);
 
+  useEffect(() => {
+    if (user !== null && user[0].accountType === "seller")
+      getSellerPropertyBookings(dispatchSellerPropertyBookings, user[0].id);
+  }, [user]);
+
   const buyersForArray = buyers.map((buyer) => {
     return { label: buyer.firstName + " " + buyer.lastName, value: buyer.id };
   });
@@ -93,6 +104,8 @@ function PropertyByIdPage() {
           createdAt: new Date().toUTCString(),
           bookingTime: viewingDate,
           buyerId: user[0].id,
+          buyerName: user[0].firsName + user[0].lastName,
+          sellerId: property[0].sellerId,
           propertyId: property[0].id,
           address: property[0].address,
           postcode: property[0].postcode,
@@ -142,9 +155,7 @@ function PropertyByIdPage() {
   return (
     <div className="container mx-auto px-8 md:px-20  py-4">
       {loading || property.length === 0 ? (
-        <h1 className="text-center py-48 text-9xl text-[#0C356A]">
-          Loading...
-        </h1>
+       <Loader />
       ) : (
         <>
           {user !== null &&
@@ -288,6 +299,35 @@ function PropertyByIdPage() {
               </div>
             )}
 
+            {user !== null && user[0].accountType === "seller" && (
+              <div>
+                <div className="mt-4">
+                  <h1 className="text-2xl border-b border-gray-300 py-2">
+                    Manage bookings
+                  </h1>
+
+                  {sellerPropertyBookings.length === 0 ? (
+                    <div>
+                      <p>No bookings created. Add one below</p>{" "}
+                    </div>
+                  ) : (
+                    <dl className="divide-y divide-gray-100">
+                      {sellerPropertyBookings.map((booking) => (
+                        <div className="px-4 py-6 flex justify-between">
+                          <dt className="text-lg font-medium leading-6 text-gray-900">
+                           {booking.buyerName}
+                          </dt>
+                          <dd className="mt-1 text-lg leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                            {new Date(booking.bookingTime).toUTCString()}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+                  )}
+                </div>
+              </div>
+            )}
+
             {user !== null && user[0].accountType === "buyer" && (
               <div>
                 <div className="">
@@ -303,7 +343,7 @@ function PropertyByIdPage() {
                     <dl className="divide-y divide-gray-100">
                       <div className="px-4 py-6 flex justify-between">
                         <dt className="text-lg font-medium leading-6 text-gray-900">
-                          Avaialble Booking
+                          Available Bookings
                         </dt>
                         <dd className="mt-1 text-lg leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                           {new Date(booking[0].bookingTime).toUTCString()}
