@@ -90,6 +90,7 @@ const AddProperty = () => {
             bathrooms: bathroomNumber,
             bedrooms: bedroomNumber,
             garden: gardenNumber,
+            status: "For sale",
           },
           dispatch
         );

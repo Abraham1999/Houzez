@@ -107,14 +107,13 @@ function PropertyByIdPage() {
 
   const handleBooking = (e) => {
     e.preventDefault();
-
     if (booking.length === 0) {
       addBookingHandler(
         {
           createdAt: new Date().toUTCString(),
           bookingTime: viewingDate,
           buyerId: user[0].id,
-          buyerName: user[0].firsName + user[0].lastName,
+          buyerName: user[0].firstName + user[0].lastName,
           sellerId: property[0].sellerId,
           propertyId: property[0].id,
           address: property[0].address,
@@ -124,6 +123,7 @@ function PropertyByIdPage() {
       );
       setShowBookingsForm(false);
       setViewingDate(null);
+      getBooking(dispatchBooking, user !== null && user[0].id, id, setLoading);
     } else {
       editBookingHandler(
         {
@@ -132,6 +132,9 @@ function PropertyByIdPage() {
         booking[0].id,
         dispatch
       );
+      setShowBookingsForm(false);
+      setViewingDate(null);
+      getBooking(dispatchBooking, user !== null && user[0].id, id, setLoading);
     }
   };
 
@@ -141,8 +144,14 @@ function PropertyByIdPage() {
     }
   }, [navigate]);
 
-  const handleDeleteBooking = () => {
+  const handleDeleteBooking = async () => {
     deleteBooking(dispatch, booking[0].id);
+    await getBooking(
+      dispatchBooking,
+      user !== null && user[0].id,
+      id,
+      setLoading
+    );
   };
 
   const handleChangeStatus = (propertyId) => {
@@ -206,7 +215,7 @@ function PropertyByIdPage() {
             <div className="py-4">
               <Tag
                 value={property[0].status}
-                extraStyle="mt-4 bg-teal-500 w-24 text-center"
+                extraStyle="mt-4 bg-cyan-500 w-fit text-center"
               />
 
               <h1 className="text-4xl font-bold pt-4 pb-2">
@@ -327,7 +336,7 @@ function PropertyByIdPage() {
                       <div className="pt-6">
                         <p className="text-center font-bold text-xl">
                           No bookings on this property.
-                        </p>{" "}
+                        </p>
                       </div>
                     ) : (
                       <dl className="divide-y divide-gray-100">
@@ -352,20 +361,30 @@ function PropertyByIdPage() {
 
             {user !== null && user[0].accountType === "buyer" && (
               <div>
-                <div className="">
-                  <h1 className="text-2xl border-b border-gray-300 py-2">
-                    Manage bookings
-                  </h1>
+                <div className="mt-4">
+                  <div className="py-2 flex justify-between border-b border-gray-300 ">
+                    <h1 className="text-2xl">Manage bookings</h1>
+                    <Button
+                      type="button"
+                      className=" bg-[#0C356A] hover:bg-[#0C356A] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                      onClick={() => handleShowBookingForm()}
+                      text={
+                        booking.length === 0 ? "Add booking" : "Edit booking"
+                      }
+                    />
+                  </div>
 
                   {booking.length === 0 ? (
-                    <div>
-                      <p>No bookings created. Add one below</p>{" "}
+                    <div className="pt-6">
+                      <p className="text-center font-bold text-xl">
+                        You have no booking
+                      </p>{" "}
                     </div>
                   ) : (
                     <dl className="divide-y divide-gray-100">
                       <div className="px-4 py-6 flex justify-between">
                         <dt className="text-lg font-medium leading-6 text-gray-900">
-                          Available Bookings
+                          Current Booking
                         </dt>
                         <dd className="mt-1 text-lg leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                           {new Date(booking[0].bookingTime).toUTCString()}
@@ -377,27 +396,19 @@ function PropertyByIdPage() {
                   <div className="flex justify-end space-x-4">
                     {booking.length > 0 &&
                       user[0].accountType === "buyer" &&
-                      user[0].id === booking[0].buyerId && (
+                      user[0].id === booking[0].buyerId &&
+                      !showBookingsForm && (
                         <div>
                           <div>
                             <Button
-                              type="submit"
+                              type="button"
                               className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                              onClick={handleDeleteBooking}
-                              text="Delete"
+                              onClick={() => handleDeleteBooking()}
+                              text="Delete booking"
                             />
                           </div>
                         </div>
                       )}
-
-                    <Button
-                      type="button"
-                      className=" bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                      onClick={handleShowBookingForm}
-                      text={
-                        booking.length === 0 ? "Add booking" : "Edit booking"
-                      }
-                    />
                   </div>
                 </div>
               </div>
