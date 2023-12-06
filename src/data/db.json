@@ -231,6 +231,17 @@
       "address": "542 Lionsfield avenue, Livingwaters, Aberdeen ",
       "postcode": "AB43 LAL",
       "id": 23231113
+    },
+    {
+      "createdAt": "Wed, 06 Dec 2023 21:49:16 GMT",
+      "bookingTime": "2023-12-15T21:30:00.000Z",
+      "buyerId": 2,
+      "buyerName": "JoshDoe",
+      "sellerId": 1,
+      "propertyId": 1,
+      "address": "1213 Fake Street, Dundee",
+      "postcode": "DD123",
+      "id": 23231114
     }
   ]
 }

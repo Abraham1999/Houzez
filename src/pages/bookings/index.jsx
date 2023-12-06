@@ -3,7 +3,11 @@ import { UserContext, filterBookingData } from "../../utils/helpers";
 import { useContext, useEffect, useReducer, useState } from "react";
 import FilterComponent from "../../components/filter";
 import { limitOptions } from "../../utils/data";
-import { deleteBooking, getBookings } from "../../services/actions/bookings";
+import {
+  deleteBooking,
+  getBookings,
+  getSellerBookings,
+} from "../../services/actions/bookings";
 import { bookingReducer } from "../../services/reducers/bookings";
 import { TrashIcon } from "@heroicons/react/24/outline";
 const BookingsPage = () => {
@@ -16,8 +20,18 @@ const BookingsPage = () => {
     if (!localStorage.getItem("houzez_email")) {
       navigate("/login");
     } else {
-      if (user !== null) {
+      if (user !== null && user[0].accountType === "buyer") {
         getBookings(dispatch, user[0].id);
+      }
+    }
+  }, [navigate, user]);
+
+  useEffect(() => {
+    if (!localStorage.getItem("houzez_email")) {
+      navigate("/login");
+    } else {
+      if (user !== null && user[0].accountType === "seller") {
+        getSellerBookings(dispatch, user[0].id);
       }
     }
   }, [navigate, user]);
