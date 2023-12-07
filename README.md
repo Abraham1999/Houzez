@@ -1,5 +1,5 @@
 #  HOUZEZ
-![](./src/assets/images/houzez.png){width=500px}
+![](./src/assets/images/houzez.png)
   
 #  About the project
 
