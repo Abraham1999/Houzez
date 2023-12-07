@@ -433,6 +433,8 @@ function PropertyByIdPage() {
                       excludeTimes={excludedDates}
                       className="w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       onChange={(date) => setViewingDate(date)}
+                      minTime={new Date().setHours(9, 0)}
+                      maxTime={new Date().setHours(17, 0)}
                     />
                   </div>
 
