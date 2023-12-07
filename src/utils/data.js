@@ -128,50 +128,66 @@ export const propertyImages = [
 export const landingPageCards = [
   {
     id: 1,
-    url: "https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    url: require("../assets/images/profilePics/Anthony.jpg"),
     subtitle:
       '"Houzez exceeded my expectations! The team was incredibly helpful, guiding me through every step of the rental process. Their professionalism and dedication made finding my dream home a seamless experience."',
-    author: "Nora Walters",
-    location: "Forfar, Dundee.",
+    author: "Anthony Leif Patrick Peterson",
+    location: "Forfar, Glasgow.",
   },
   {
     id: 2,
-    url: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    url: require("../assets/images/profilePics/Gemma.jpg"),
     subtitle:
       '"I had an outstanding experience with Houzez. They listened attentively to my preferences and found me the perfect property within my budget. I highly recommend their services for anyone seeking a hassle-free renting process."',
-    author: "Michael Kingswell",
+    author: "Gemma Grant",
     location: "Peterson, Edingburg.",
   },
   {
     id: 3,
-    url: "https://images.pexels.com/photos/1722198/pexels-photo-1722198.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    url: require("../assets/images/profilePics/Toby.jpg"),
     subtitle:
       '"Five stars to Houzez! The staff was knowledgeable, friendly, and always available to address any concerns. Their commitment to customer satisfaction is commendable, and I am grateful for their assistance in finding a beautiful home."',
-    author: "Daniel Wellington",
+    author: "Toby Keech",
     location: "Kurktown, Glasgow.",
   },
   {
     id: 4,
-    url: "https://images.pexels.com/photos/5876695/pexels-photo-5876695.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    url: require("../assets/images/profilePics/Ayo.jpg"),
     subtitle:
       '"Houzez made my relocation stress-free! Their prompt responses and personalized approach made me feel valued as a client. I am thrilled with the property they helped me find and could not be happier with their service."',
-    author: "Diana Ross",
+    author: "Ayodeji Shote",
     location: "Dyce, Aberdeen.",
   },
   {
     id: 5,
-    url: "https://images.pexels.com/photos/2834009/pexels-photo-2834009.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    url: require("../assets/images/profilePics/Vasu.jpg"),
     subtitle:
       '"I can not thank Houzez enough for their exceptional service. They were proactive in finding properties that matched my criteria, and their expertise in the real estate market was evident throughout the entire process. Highly recommended!"',
-    author: "Trent Daxler",
+    author: "Vasu Agarwal",
     location: "Marketgait, Dundee.",
   },
   {
     id: 6,
-    url: "https://images.pexels.com/photos/3770254/pexels-photo-3770254.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    url: require("../assets/images/profilePics/Maxwell.jpg"),
     subtitle:
       '"Choosing Houzez was the best decision I made while searching for a property. Their expertise and guidance simplified the otherwise daunting process. I am grateful for their support and highly recommend their services."',
-    author: "Merissa Collie",
+    author: "Maxwell Bowie",
+    location: "Danestone, Aberdeen.",
+  },
+  {
+    id: 7,
+    url: require("../assets/images/profilePics/Chengyu.jpg"),
+    subtitle:
+      '"Choosing Houzez was the best decision I made while searching for a property. Their expertise and guidance simplified the otherwise daunting process. I am grateful for their support and highly recommend their services."',
+    author: "Chengyu Kang",
+    location: "Danestone, Aberdeen.",
+  },
+  {
+    id: 8,
+    url: require("../assets/images/profilePics/Lyam.jpg"),
+    subtitle:
+      '"Choosing Houzez was the best decision I made while searching for a property. Their expertise and guidance simplified the otherwise daunting process. I am grateful for their support and highly recommend their services."',
+    author: "Lyam Walburn",
     location: "Danestone, Aberdeen.",
   },
 ];

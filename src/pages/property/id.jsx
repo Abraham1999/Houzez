@@ -113,7 +113,7 @@ function PropertyByIdPage() {
           createdAt: new Date().toUTCString(),
           bookingTime: viewingDate,
           buyerId: user[0].id,
-          buyerName: user[0].firstName + user[0].lastName,
+          buyerName: `${user[0].firstName} ${user[0].lastName}`,
           sellerId: property[0].sellerId,
           propertyId: property[0].id,
           address: property[0].address,

@@ -224,7 +224,7 @@
     {
       "createdAt": "Wed, 06 Dec 2023 21:46:15 GMT",
       "bookingTime": "2023-12-15T22:00:00.000Z",
-      "buyerId": 2,
+      "buyerId": 1,
       "buyerName": "undefinedDoe",
       "sellerId": 1,
       "propertyId": 2,
@@ -235,7 +235,7 @@
     {
       "createdAt": "Wed, 06 Dec 2023 21:49:16 GMT",
       "bookingTime": "2023-12-15T21:30:00.000Z",
-      "buyerId": 2,
+      "buyerId": 1,
       "buyerName": "JoshDoe",
       "sellerId": 1,
       "propertyId": 1,

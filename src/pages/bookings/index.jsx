@@ -78,10 +78,16 @@ const BookingsPage = () => {
                     <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider">
                       Booking Time
                     </th>
-                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider">
-                      Delete
-                    </th>
-
+                    {user !== null && user[0].accountType === "seller" && (
+                      <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider">
+                        Buyer Name
+                      </th>
+                    )}
+                    {user !== null && user[0].accountType === "buyer" && (
+                      <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider">
+                        Delete
+                      </th>
+                    )}
                     <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider"></th>
                   </tr>
                 </thead>
@@ -105,15 +111,24 @@ const BookingsPage = () => {
                           {new Date(booking.bookingTime).toUTCString()}
                         </p>
                       </td>
+                      {user !== null && user[0].accountType === "seller" && (
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {booking.buyerName}
+                          </p>
+                        </td>
+                      )}
 
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <div className="pl-4 cursor-pointer text-center">
-                          <TrashIcon
-                            onClick={() => handleDeleteBooking(booking.id)}
-                            className="w-8 h-8 text-red-600 text-center"
-                          />
-                        </div>
-                      </td>
+                      {user !== null && user[0].accountType === "buyer" && (
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="pl-4 cursor-pointer text-center">
+                            <TrashIcon
+                              onClick={() => handleDeleteBooking(booking.id)}
+                              className="w-8 h-8 text-red-600 text-center"
+                            />
+                          </div>
+                        </td>
+                      )}
                     </tr>
                   ))}
                 </tbody>
