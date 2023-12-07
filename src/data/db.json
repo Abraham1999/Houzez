@@ -8,7 +8,7 @@
       "postcode": "DR 234",
       "phone": "123454",
       "password": "12345",
-      "accountType": "seller",
+      "accountType": "buyer",
       "id": 1,
       "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
     },
@@ -143,6 +143,18 @@
       "accountType": "seller",
       "createdAt": "Tue, 05 Dec 2023 10:57:10 GMT",
       "id": 12
+    },
+    {
+      "firstName": "Ab",
+      "lastName": "Cd",
+      "email": "test222@gmail.com",
+      "address": "test222@gmail.com",
+      "postcode": "test222@gmail.com",
+      "phone": "323231",
+      "password": "12345",
+      "accountType": "seller",
+      "createdAt": "Thu, 07 Dec 2023 15:36:12 GMT",
+      "id": 13
     }
   ],
   "property": [
@@ -218,6 +230,24 @@
       "garden": "1",
       "status": "For sale",
       "id": 3
+    },
+    {
+      "image": {
+        "id": 9,
+        "url": "https://images.pexels.com/photos/259685/pexels-photo-259685.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      },
+      "sellerId": 13,
+      "createdAt": "Thu, 07 Dec 2023 15:37:26 GMT",
+      "address": "23123123 ",
+      "postcode": "23123",
+      "description": "fjnjer",
+      "price": "323023",
+      "type": "Detached",
+      "bathrooms": 1,
+      "bedrooms": 1,
+      "garden": 0,
+      "status": "For sale",
+      "id": 46
     }
   ],
   "booking": [
@@ -242,6 +272,17 @@
       "address": "1213 Fake Street, Dundee",
       "postcode": "DD123",
       "id": 23231114
+    },
+    {
+      "createdAt": "Thu, 07 Dec 2023 15:40:00 GMT",
+      "bookingTime": "2023-12-26T02:00:00.000Z",
+      "buyerId": 1,
+      "buyerName": "Abraham Kolawole",
+      "sellerId": 13,
+      "propertyId": 46,
+      "address": "23123123 ",
+      "postcode": "23123",
+      "id": 23231115
     }
   ]
 }
