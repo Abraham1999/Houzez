@@ -1,0 +1,247 @@
+{
+  "users": [
+    {
+      "firstName": "Abraham",
+      "lastName": "Kolawole",
+      "email": "test2@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "seller",
+      "id": 1,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
+    },
+    {
+      "firstName": "Josh",
+      "lastName": "Doe",
+      "email": "test12@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "buyer",
+      "id": 2,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
+    },
+    {
+      "firstName": "Jen",
+      "lastName": "Quay",
+      "email": "jen@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "buyer",
+      "id": 3,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
+    },
+    {
+      "firstName": "Pel",
+      "lastName": "Lew",
+      "email": "lew@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "buyer",
+      "id": 4,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
+    },
+    {
+      "firstName": "Limpson",
+      "lastName": "Brow",
+      "email": "test3@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "buyer",
+      "id": 5,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
+    },
+    {
+      "firstName": "Serde",
+      "lastName": "Awes",
+      "email": "Serde@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "buyer",
+      "id": 6,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
+    },
+    {
+      "firstName": "Nell",
+      "lastName": "Pirld",
+      "email": "pirlo@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "buyer",
+      "id": 7,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
+    },
+    {
+      "firstName": "Yudge",
+      "lastName": "Heold",
+      "email": "eruge@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "buyer",
+      "id": 8,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
+    },
+    {
+      "firstName": "Low",
+      "lastName": "Kerk",
+      "email": "test9@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "buyer",
+      "id": 9,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
+    },
+    {
+      "firstName": "Andrew",
+      "lastName": "Lorre",
+      "email": "test10@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "buyer",
+      "id": 10,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
+    },
+    {
+      "firstName": "Barry",
+      "lastName": "Drew",
+      "email": "test11@gmail.com",
+      "address": "32 Dundee Road",
+      "postcode": "DR 234",
+      "phone": "123454",
+      "password": "12345",
+      "accountType": "buyer",
+      "id": 11,
+      "createdAt": "Fri, 01 Dec 2023 15:51:22 GMT"
+    },
+    {
+      "firstName": "Makaveli",
+      "lastName": "Test",
+      "email": "test3402@gmail.com",
+      "address": "73 Regent Walk, Aberdeen, Scotland",
+      "postcode": "Ar430234",
+      "phone": "34489408",
+      "password": "1234567",
+      "accountType": "seller",
+      "createdAt": "Tue, 05 Dec 2023 10:57:10 GMT",
+      "id": 12
+    }
+  ],
+  "property": [
+    {
+      "image": {
+        "id": 5,
+        "url": "https://images.pexels.com/photos/164522/pexels-photo-164522.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      },
+      "sellerId": 1,
+      "createdAt": "Tue, 05 Dec 2023 10:54:17 GMT",
+      "address": "1213 Fake Street, Dundee",
+      "postcode": "DD123",
+      "description": "Beautiful house in Dundee, United Kindgom, with a decorative style and high technology devices embedded into it.",
+      "price": "1000",
+      "type": "Bungalow",
+      "bathrooms": "5",
+      "bedrooms": "6",
+      "garden": "3",
+      "status": "Withdrawn",
+      "id": 1,
+      "buyerId": null
+    },
+    {
+      "image": {
+        "id": 3,
+        "url": "https://images.pexels.com/photos/2587054/pexels-photo-2587054.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      },
+      "sellerId": 1,
+      "createdAt": "Mon, 04 Dec 2023 14:22:32 GMT",
+      "address": "542 Lionsfield avenue, Livingwaters, Aberdeen ",
+      "postcode": "AB43 LAL",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "price": "343,000",
+      "type": "Mansion",
+      "bathrooms": "7",
+      "bedrooms": "5",
+      "garden": "1",
+      "status": "For sale",
+      "id": 2
+    },
+    {
+      "image": {
+        "id": 3,
+        "url": "https://images.pexels.com/photos/2587054/pexels-photo-2587054.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      },
+      "sellerId": 12,
+      "createdAt": "Mon, 04 Dec 2023 14:22:32 GMT",
+      "address": "542 Lionsfield avenue, Livingwaters, Aberdeen ",
+      "postcode": "AB43 LAL",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "price": "343,000",
+      "type": "Mansion",
+      "bathrooms": "7",
+      "bedrooms": "5",
+      "garden": "1",
+      "status": "For sale",
+      "id": 45
+    },
+    {
+      "image": {
+        "id": 2,
+        "url": "https://images.pexels.com/photos/1974596/pexels-photo-1974596.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      },
+      "sellerId": 1,
+      "createdAt": "Mon, 04 Dec 2023 14:23:28 GMT",
+      "address": "23 Provost road, Inverness",
+      "postcode": "PR232",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "price": "435,939",
+      "type": "Bungalow",
+      "bathrooms": "2",
+      "bedrooms": "2",
+      "garden": "1",
+      "status": "For sale",
+      "id": 3
+    }
+  ],
+  "booking": [
+    {
+      "createdAt": "Wed, 06 Dec 2023 21:46:15 GMT",
+      "bookingTime": "2023-12-15T22:00:00.000Z",
+      "buyerId": 1,
+      "buyerName": "undefinedDoe",
+      "sellerId": 1,
+      "propertyId": 2,
+      "address": "542 Lionsfield avenue, Livingwaters, Aberdeen ",
+      "postcode": "AB43 LAL",
+      "id": 23231113
+    },
+    {
+      "createdAt": "Wed, 06 Dec 2023 21:49:16 GMT",
+      "bookingTime": "2023-12-15T21:30:00.000Z",
+      "buyerId": 1,
+      "buyerName": "JoshDoe",
+      "sellerId": 1,
+      "propertyId": 1,
+      "address": "1213 Fake Street, Dundee",
+      "postcode": "DD123",
+      "id": 23231114
+    }
+  ]
+}
