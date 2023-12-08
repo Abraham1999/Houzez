@@ -10,10 +10,12 @@ import {
 } from "../../services/actions/bookings";
 import { bookingReducer } from "../../services/reducers/bookings";
 import { TrashIcon } from "@heroicons/react/24/outline";
+import Loader from "../../components/loader";
 const BookingsPage = () => {
   const user = useContext(UserContext);
   const navigate = useNavigate();
 
+  const [loading, setLoading] = useState(false);
   const [bookings, dispatch] = useReducer(bookingReducer, []);
 
   useEffect(() => {
@@ -21,7 +23,9 @@ const BookingsPage = () => {
       navigate("/login");
     } else {
       if (user !== null && user[0].accountType === "buyer") {
+        setLoading(true);
         getBookings(dispatch, user[0].id);
+        setLoading(false);
       }
     }
   }, [navigate, user]);
@@ -31,7 +35,9 @@ const BookingsPage = () => {
       navigate("/login");
     } else {
       if (user !== null && user[0].accountType === "seller") {
+        setLoading(true);
         getSellerBookings(dispatch, user[0].id);
+        setLoading(false);
       }
     }
   }, [navigate, user]);
@@ -64,76 +70,80 @@ const BookingsPage = () => {
             searchPlaceHolder="Search"
           />
 
-          <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-            <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
-              <table className="min-w-full leading-normal">
-                <thead>
-                  <tr>
-                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider">
-                      Address
-                    </th>
-                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider">
-                      Post Code
-                    </th>
-                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider">
-                      Booking Time
-                    </th>
-                    {user !== null && user[0].accountType === "seller" && (
+          {loading ? (
+            <Loader />
+          ) : (
+            <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+              <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                <table className="min-w-full leading-normal">
+                  <thead>
+                    <tr>
                       <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider">
-                        Buyer Name
+                        Address
                       </th>
-                    )}
-                    {user !== null && user[0].accountType === "buyer" && (
                       <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider">
-                        Delete
+                        Post Code
                       </th>
-                    )}
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredData.map((booking) => (
-                    <tr key={booking.id}>
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <Link to={`/property/${booking.propertyId}`}>
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {booking.address}
-                          </p>
-                        </Link>
-                      </td>
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p className="text-gray-900 whitespace-no-wrap">
-                          {booking.postcode}
-                        </p>
-                      </td>
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p className="text-gray-900 whitespace-no-wrap">
-                          {new Date(booking.bookingTime).toUTCString()}
-                        </p>
-                      </td>
+                      <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider">
+                        Booking Time
+                      </th>
                       {user !== null && user[0].accountType === "seller" && (
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {booking.buyerName}
-                          </p>
-                        </td>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider">
+                          Buyer Name
+                        </th>
                       )}
-
                       {user !== null && user[0].accountType === "buyer" && (
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <div className="pl-4 cursor-pointer text-center">
-                            <TrashIcon
-                              onClick={() => handleDeleteBooking(booking.id)}
-                              className="w-8 h-8 text-red-600 text-center"
-                            />
-                          </div>
-                        </td>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider">
+                          Delete
+                        </th>
                       )}
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {filteredData.map((booking) => (
+                      <tr key={booking.id}>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <Link to={`/property/${booking.propertyId}`}>
+                            <p className="text-gray-900 whitespace-no-wrap">
+                              {booking.address}
+                            </p>
+                          </Link>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {booking.postcode}
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {new Date(booking.bookingTime).toUTCString()}
+                          </p>
+                        </td>
+                        {user !== null && user[0].accountType === "seller" && (
+                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap">
+                              {booking.buyerName}
+                            </p>
+                          </td>
+                        )}
+
+                        {user !== null && user[0].accountType === "buyer" && (
+                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <div className="pl-4 cursor-pointer text-center">
+                              <TrashIcon
+                                onClick={() => handleDeleteBooking(booking.id)}
+                                className="w-8 h-8 text-red-600 text-center"
+                              />
+                            </div>
+                          </td>
+                        )}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
