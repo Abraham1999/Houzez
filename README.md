@@ -2,27 +2,14 @@
 
 ![](./src/assets/images/houzez.png)
 
-# ABOUT ME
-
-My name is Abraham Kolawole.
 
 # About the project
 
 Houzez is a property website designed to manage properties, catered to both buyers and sellers. Built using React, Tailwind CSS, and JSON Server for data handling, it offers a user-friendly interface and simple functionalities for seamless property management and booking.
 
-## Task management
-
-Having a Trello board was super helpful. It organized the process of programming and reduced scope creep.
-
-## Codebase structure
-
-After creating the tasks on the trello board, i focused on the project structure. I wanted to makes sure almost all the code was reuseable.
-
 ## Project architecture
 
 ![](./src/assets/images/architecture.png)
-
-## TIME FOR DEMO!!!!
 
 # Getting Started
 
