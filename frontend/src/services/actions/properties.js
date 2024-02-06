@@ -1,3 +1,7 @@
+import config from "../../config";
+import axios from "axios";
+import toast from "react-hot-toast";
+
 export const addPropertyHandler = (newProperty, dispatch) => {
   fetch("http://localhost:5000/property", {
     method: "POST",
@@ -15,21 +19,23 @@ export const addPropertyHandler = (newProperty, dispatch) => {
     });
 };
 
-export const getProperties = (dispatch) => {
-  fetch("http://localhost:5000/property")
+export const getProperties = async (dispatch) => {
+  // fetch("http://localhost:5000/property")
+  await axios
+    .get(`${config.baseApiUrl}/Property`)
     .then((response) => {
-      if (!response.ok) {
-        alert("An error has occurred.");
+      if (!response.status === 200) {
+        toast.error("An error has occurred.");
         throw response.status;
       } else {
-        return response.json();
+        return response.data;
       }
     })
     .then((properties) => {
       dispatch({ type: "GET_PROPERTIES", payload: properties });
     })
     .catch((error) => {
-      alert(error);
+      toast.error(error);
     });
 };
 
@@ -37,7 +43,7 @@ export const getProperty = (dispatch, id, setLoading) => {
   fetch(`http://localhost:5000/property?id=${id}`)
     .then((response) => {
       if (!response.ok) {
-        alert("An error has occurred.");
+        toast.error("An error has occurred.");
         throw response.status;
       } else {
         return response.json();
@@ -48,7 +54,7 @@ export const getProperty = (dispatch, id, setLoading) => {
       setLoading(false);
     })
     .catch((error) => {
-      alert(error);
+      toast.error(error);
     });
 };
 
@@ -56,7 +62,7 @@ export const deleteProperty = (dispatch, id) => {
   fetch(`http://localhost:5000/property/${id}`, { method: "DELETE" })
     .then((response) => {
       if (!response.ok) {
-        alert("An error has occurred.");
+        toast.error("An error has occurred.");
         throw response.status;
       } else {
         return response.json();
@@ -66,7 +72,7 @@ export const deleteProperty = (dispatch, id) => {
       dispatch({ type: "DELETE_PROPERTY", payload: data });
     })
     .catch((error) => {
-      alert(error);
+      toast.error(error);
     });
 };
 
@@ -111,7 +117,7 @@ export const getSellerProperty = (dispatch, id) => {
   fetch(`http://localhost:5000/property?sellerId=${id}`)
     .then((response) => {
       if (!response.ok) {
-        alert("An error has occurred.");
+        toast.error("An error has occurred.");
         throw response.status;
       } else {
         return response.json();
@@ -121,6 +127,6 @@ export const getSellerProperty = (dispatch, id) => {
       dispatch({ type: "GET_PROPERTY", payload: data });
     })
     .catch((error) => {
-      alert(error);
+      toast.error(error);
     });
 };

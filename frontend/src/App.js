@@ -19,6 +19,7 @@ import Footer from "./layout/Footer";
 import SellerId from "./pages/seller/id";
 import BuyerId from "./pages/buyer/id";
 import Loader from "./components/loader";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -39,6 +40,7 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <Toaster />
       {loading ? (
         <Loader />
       ) : (
