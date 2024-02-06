@@ -1,36 +1,62 @@
-﻿using houzez_api.Data;
-using Microsoft.AspNetCore.Cors;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using houzez_api.Data;
+using houzez_api.DTO;
+using houzez_api.Models;
+using houzez_api.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using houzez_api.Models;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
-namespace JWTAuth.WebApi.Controllers
+namespace houzez_api.Controllers
 {
     [Route("api/token")]
     [ApiController]
     //[EnableCors(""_myAllowSpecificOrigins"")]
     public class TokenController : ControllerBase
     {
+        private IUserService _userService;
         public IConfiguration _configuration;
         private readonly HouzezDbContext _context;
 
-        public TokenController(IConfiguration config, HouzezDbContext context)
+        public TokenController(IConfiguration config, HouzezDbContext context, IUserService service)
         {
             _configuration = config;
             _context = context;
+            _userService = service;
+        }
+
+        [HttpPost]
+        [Route("register")]
+        public async Task<IActionResult> Register(UserDTO _userData)
+        {
+            var userCheck = await GetUser(_userData.Email);
+
+            if (userCheck is not null)
+            {
+                throw new ArgumentException($"User with email {userCheck.Email} already exists.");
+            }
+
+            _userData.Password = BCrypt.Net.BCrypt.HashPassword(_userData.Password);
+            _userData = _userService.Create(_userData);
+            await Login(new LoginDTO { Email = _userData.Email, Password = _userData.Password });
+            return Ok(_userData);
         }
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login(User _userData)
+        public async Task<IActionResult> Login(LoginDTO _userData)
         {
-            if (_userData != null && _userData.Email != null && _userData.Password != null)
+            if (_userData != null && _userData.Email != null)
             {
-                var user = await GetUser(_userData.Email, _userData.Password);
+                var user = await GetUser(_userData.Email);
+
+                if (user == null || !BCrypt.Net.BCrypt.Verify(_userData.Password, user.Password))
+                {
+                    throw new ArgumentException("Email or password is incorrect");
+                }
+
 
                 if (user != null)
                 {
@@ -75,12 +101,13 @@ namespace JWTAuth.WebApi.Controllers
             }
         }
 
-        private async Task<User> GetUser(string Email, string password)
+        private async Task<User> GetUser(string Email)
         {
-            return await _context.Users.FirstOrDefaultAsync(u => u.Email == Email && u.Password == password);
+            return await _context.Users.FirstOrDefaultAsync(u => u.Email == Email);
         }
 
-        public class AuthorizationResponse {
+        public class AuthorizationResponse
+        {
             public string UserId { get; set; }
             public string AuthorizationToken { get; set; }
             public string RefreshToken { get; set; }
