@@ -45,15 +45,6 @@ const RegisterPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    let checkIfEmailExists = usersList.filter((user) =>
-      user.email.includes(emailRef.current.value)
-    );
-
-    if (checkIfEmailExists.length > 0) {
-      alert("User Exists, select another email.");
-      return;
-    }
-
     setFirstNameError(!firstNameRef.current.value);
     setLastNameError(!lastNameRef.current.value);
     setEmailError(!emailRef.current.value);
@@ -72,6 +63,15 @@ const RegisterPage = () => {
       passwordRef.current.value &&
       postcodeRef.current.value
     ) {
+      let checkIfEmailExists = usersList.filter((user) =>
+        user.email.includes(emailRef.current.value)
+      );
+
+      if (checkIfEmailExists.length > 0) {
+        alert("User Exists, select another email.");
+        return;
+      }
+
       addUserHandler(
         {
           firstName: firstNameRef.current.value,
@@ -114,11 +114,13 @@ const RegisterPage = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-2xl justify-center mx-auto">
+    <main className="w-full max-w-2xl justify-center mx-auto">
       <form className="bg-white rounded px-8 pt-6 pb-8 mb-4">
         <div>
           <div>
-            <p className="pb-4 text-6xl font-bold text-center">Create Account</p>
+            <p className="pb-4 text-6xl font-bold text-center">
+              Create Account
+            </p>
             <Input
               type="text"
               label="First Name"
@@ -220,12 +222,12 @@ const RegisterPage = () => {
         </div>
         <p className="pt-2">
           Already have an account?{" "}
-          <Link to="/login" className="underline text-blue-400">
+          <Link to="/login" className="underline text-blue-600">
             Login
           </Link>
         </p>
       </form>
-    </div>
+    </main>
   );
 };
 export default RegisterPage;

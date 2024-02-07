@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import { statusTypes } from "./data";
 
 export function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -89,5 +90,18 @@ export const filterBookingData = (data, limit, searchTerm) => {
 
     default:
       return data;
+  }
+};
+
+export const propertyTypeTagColor = (status) => {
+  switch (status) {
+    case statusTypes[0].value:
+      return "bg-sky-700";
+    case statusTypes[1].value:
+      return "bg-teal-700";
+    case statusTypes[2].value:
+      return "bg-stone-700";
+    default:
+      return "bg-sky-700";
   }
 };

@@ -4,7 +4,7 @@ const BuyerId = () => {
   const buyer = useLocation().state;
 
   return (
-    <div className="container mx-auto px-8 md:px-20  py-4">
+    <main className="container mx-auto px-8 md:px-20  py-4">
       <div className="text-3xl font-bold ">Buyer Information</div>
 
       <div className="mt-6 border-t border-gray-100">
@@ -43,7 +43,7 @@ const BuyerId = () => {
           </div>
         </dl>
       </div>
-    </div>
+    </main>
   );
 };
 
