@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import config from "../../config";
-
-
+import axios from "axios";
+import setAuthToken from "../../utils/setAuthToken";
 	
 // Response body
 // Download
@@ -10,6 +10,24 @@ import config from "../../config";
 //   "authorizationToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKV1RTZXJ2aWNlQWNjZXNzVG9rZW4iLCJqdGkiOiJkNTdmMmZhYi02MWVlLTRhMGItODk1OC0xOGY5MWRlYjM4YjQiLCJpYXQiOiIwNi8wMi8yMDI0IDE2OjM2OjA2IiwiVXNlcklkIjoiOCIsIkVtYWlsIjoidGVzdDEyM0BnbWFpbC5jb20iLCJleHAiOjE3MDcyMzc5NjYsImlzcyI6IkpXVEF1dGhlbnRpY2F0aW9uU2VydmVyIiwiYXVkIjoiSldUU2VydmljZVBvc3RtYW5DbGllbnQifQ.uMCjevGTGCjf-LaLIbjs74X-aLizSGOWAnfDpvEVvzU",
 //   "refreshToken": ""
 // }
+export const loadUser = () => async (dispatch) => {
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
+  try {
+    const res = await  axios.get('/user/auth');
+
+    dispatch({
+      type: "USER_LOADED",
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: "LOGIN_ERROR",
+    });
+  }
+};
+
 
 export async function loginUserHandler(dispatch, loginPayload) {
   const requestOptions = {

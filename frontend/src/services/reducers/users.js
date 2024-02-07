@@ -2,7 +2,7 @@ let userId = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser")).userId
   : null;
 let token = localStorage.getItem("currentUser")
-  ? JSON.parse(localStorage.getItem("currentUser")).auth_token
+  ? JSON.parse(localStorage.getItem("currentUser")).authorizationToken
   : null;
 
 export const state = {
@@ -19,18 +19,19 @@ export const UserReducer = (state, action) => {
         ...state,
         loading: true,
       };
-    case "REGISTER_SUCCESS":
+    case "USER_LOADED":
       return {
         ...state,
-        user: action.payload.user,
-        token: action.payload.auth_token,
+        user: action.payload.userId,
         loading: false,
+        token: action.payload.authorizationToken,
       };
+    case "REGISTER_SUCCESS":
     case "LOGIN_SUCCESS":
       return {
         ...state,
-        user: action.payload.user,
-        token: action.payload.auth_token,
+        user: action.payload.userId,
+        token: action.payload.authorizationToken,
         loading: false,
       };
     case "LOGOUT":
