@@ -31,7 +31,7 @@ const Input = ({
         defaultValue={value}
       />
       {error && (
-        <p className="mt-2 text-red-500 text-xs italic">{label} required</p>
+        <p className="mt-2 text-red-500 text-sm italic">{label} required</p>
       )}
     </div>
   );

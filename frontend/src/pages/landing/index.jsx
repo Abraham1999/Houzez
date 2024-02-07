@@ -25,18 +25,18 @@ const LandingPage = () => {
   }, [images.length]);
 
   return (
-    <>
+    <main>
       <div className="px-8 py-2 lg:py-8 bg-[#FAF3F0]">
         <div>
           <div className="flex items-center ">
             <div className="flex-1  pb-16 lg:pb-24 mx-auto rounded-lg">
               <div className="flex flex-col md:flex-row">
-                <div className="sm:m-auto sm:w-full sm:max-w-md py-8">
+                <div className="sm:m-auto sm:w-full sm:max-w-md py-8" tabIndex={0}>
                   <h1 className="text-left text-6xl font-bold tracking-tight">
                     Make one of our houses,{" "}
                     <span className="italic">your home!</span>
                   </h1>
-                  <p className="py-8 text-gray-500 text-xl font-bold">
+                  <p className="py-8 text-gray-500 text-xl font-bold">                        
                     We eliminate middlemen by connecting you directly to
                     property sellers and buyers.
                   </p>
@@ -58,13 +58,13 @@ const LandingPage = () => {
                     <div className="grid grid-cols-3 space-x-4 mx-auto px-16 py-6 bg-white shadow-lg rounded-xl">
                       <div className="col-span-1">
                         <p className="text-sm font-bold ">Interest rate</p>
-                        <p className="text-5xl text-orange-300">
+                          <p className="text-5xl text-[#0C356A]">
                           {images[currentImageIndex].interest}
                         </p>
                       </div>
                       <div className="col-span-2">
                         <p className="text-sm font-bold ">Monthly payments</p>
-                        <p className="text-5xl text-orange-300">
+                        <p className="text-5xl text-[#0C356A]">
                           {images[currentImageIndex].price}
                         </p>
                       </div>
@@ -77,41 +77,41 @@ const LandingPage = () => {
         </div>
       </div>
 
-      <div className="bg-white px-8 py-16">
-        <h1 className="pb-10 text-center text-5xl font-semibold">
+      <div className="bg-white px-8 py-16" role="article">
+        <h1 className="pb-10 text-center text-5xl font-semibold" tabIndex={0}>
           Why choose Houzez
         </h1>
 
         <div className="text-center grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <div>
+          <div tabIndex={0}>
             <CurrencyPoundIcon
               className="h-12 w-12 text-[#0C356A] mx-auto"
               aria-hidden="true"
             />
-            <h3 className="font-bold text-2xl">Higher proceeds</h3>
+            <h2 className="font-bold text-2xl">Higher proceeds</h2>
             <p>
               Maximize your property sales potential by up to 14% with our
               tailored buyer interaction strategies.
             </p>
           </div>
 
-          <div>
+          <div tabIndex={0}>
             <UserGroupIcon
               className="h-12 w-12 text-[#0C356A] mx-auto"
               aria-hidden="true"
             />
-            <h3 className="font-bold text-2xl">More Buyers / Sellers</h3>
+            <h2 className="font-bold text-2xl">More Buyers / Sellers</h2>
             <p>
               Accelerate your transactions by tapping into our extensive network
               of buyers and sellers for swift closures.
             </p>
           </div>
-          <div>
+          <div tabIndex={0}>
             <CheckCircleIcon
               className="h-12 w-12 text-[#0C356A] mx-auto"
               aria-hidden="true"
             />
-            <h3 className="font-bold text-2xl">Faster Property Closing</h3>
+            <h2 className="font-bold text-2xl">Faster Property Closing</h2>
             <p>
               Properties undergo swift closure facilitated by ongoing bidding
               and negotiations, expediting the transaction process.
@@ -120,14 +120,14 @@ const LandingPage = () => {
         </div>
       </div>
 
-      <div className="bg-[#FAF3F0] px-16 py-8 lg:py-12">
-        <h1 className="text-center text-5xl font-semibold">
+      <div className="bg-[#FAF3F0] px-16 py-8 lg:py-12" role="article">
+        <h1 className="text-center text-5xl font-semibold" tabIndex={0}>
           How Houzez changed lives
         </h1>
 
         <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-2">
           {landingPageCards.map((card) => (
-            <figure key={card.id} className="md:flex bg-white rounded-xl p-8 md:p-0">
+            <figure key={card.id} className="md:flex bg-white rounded-xl p-8 md:p-0" tabIndex={0}>
               <img
                 className="object-cover w-24 h-24 md:w-48 md:h-auto mx-auto  md:rounded-l-md"
                 src={card.url}
@@ -146,7 +146,7 @@ const LandingPage = () => {
           ))}
         </div>
       </div>
-    </>
+    </main>
   );
 };
 

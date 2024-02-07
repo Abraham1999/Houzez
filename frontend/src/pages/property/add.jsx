@@ -125,7 +125,7 @@ const AddProperty = () => {
   }, [navigate]);
 
   return (
-    <div className="py-16 w-full max-w-2xl justify-center mx-auto  ">
+    <main className="py-16 w-full max-w-2xl justify-center mx-auto">
       <form className="bg-white rounded px-8 pt-6 pb-8 mb-4">
         <div className="">
           <div className="">
@@ -223,7 +223,7 @@ const AddProperty = () => {
           />
         </div>
       </form>
-    </div>
+    </main>
   );
 };
 export default AddProperty;

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { TbBed } from "react-icons/tb";
 import { GiShower, GiTreeBranch } from "react-icons/gi";
 import Tag from "../components/Tag";
+import { propertyTypeTagColor } from "../utils/helpers";
 
 function PropertyContainer({ property }) {
   return (
@@ -22,7 +23,7 @@ function PropertyContainer({ property }) {
                 </h2>
                 <Tag
                   value={property.status}
-                  extraStyle="bg-teal-500 float-right"
+                  extraStyle={`${propertyTypeTagColor(property.status)} bg-teal-700 float-right`}
                 />
               </div>
               <div className="flex space-x-4 pb-4 pt-1">
