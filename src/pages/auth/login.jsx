@@ -50,7 +50,7 @@ const LoginPage = () => {
   }, [navigate]);
 
   return (
-    <div className="py-16 w-full max-w-2xl justify-center mx-auto">
+    <main className="py-16 w-full max-w-2xl justify-center mx-auto">
       <p className="pb-4 text-6xl font-bold text-center">Login</p>
       <form className="bg-white rounded px-8 pt-6 pb-8 mb-4">
         <div>
@@ -84,12 +84,12 @@ const LoginPage = () => {
         </div>
         <p className="pt-2">
           Don't have an account?{" "}
-          <Link to="/register" className="underline text-blue-400">
+          <Link to="/register" className="underline text-blue-600">
             Create account
           </Link>
         </p>
       </form>
-    </div>
+    </main>
   );
 };
 export default LoginPage;

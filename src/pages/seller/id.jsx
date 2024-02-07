@@ -50,7 +50,7 @@ const SellerId = () => {
   );
 
   return (
-    <div className="container mx-auto px-8 md:px-20  py-4">
+    <main className="container mx-auto px-8 md:px-20  py-4">
       <div className="text-3xl font-bold ">Seller Information</div>
 
       <div className="mt-6 border-t border-gray-100">
@@ -103,7 +103,7 @@ const SellerId = () => {
       {filteredData.map((property) => (
         <PropertyContainer property={property} key={property.id} />
       ))}
-    </div>
+    </main>
   );
 };
 

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useReducer, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { UserContext } from "../../utils/helpers";
+import { UserContext, propertyTypeTagColor } from "../../utils/helpers";
 import { propertyReducer } from "../../services/reducers/property";
 import { usersReducer } from "../../services/reducers/users";
 import {
@@ -189,7 +189,7 @@ function PropertyByIdPage() {
               <div className="pb-8 space-x-5 flex justify-end">
                 <Button
                   type="button"
-                  className=" bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  className=" bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   onClick={() => handleDeleteProperty()}
                   text="Delete property"
                 />
@@ -215,7 +215,7 @@ function PropertyByIdPage() {
             <div className="py-4">
               <Tag
                 value={property[0].status}
-                extraStyle="mt-4 bg-teal-700 w-fit text-center"
+                extraStyle={`${propertyTypeTagColor(property[0].status)} mt-4 bg-teal-700 w-fit text-center`}
               />
 
               <h1 className="text-4xl font-bold pt-4 pb-2">
