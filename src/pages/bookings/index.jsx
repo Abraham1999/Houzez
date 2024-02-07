@@ -47,8 +47,8 @@ const BookingsPage = () => {
   };
 
   return (
-    <div className="px-16 py-4">
-      <div className="container mx-auto px-4 sm:px-8">
+    <main className="px-16 py-4">
+      <div className="container mx-auto px-4 sm:px-8" >
         <div className="py-8">
           <div>
             <h2 className="text-3xl font-bold leading-tight">
@@ -136,7 +136,7 @@ const BookingsPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

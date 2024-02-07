@@ -48,7 +48,7 @@ const PropertiesPage = () => {
   );
 
   return (
-    <div className="container mx-auto px-8 md:px-20  py-4">
+    <div className="container mx-auto px-8 md:px-20  py-4" role="main">
       <div>
         {user !== null && user[0].accountType === "seller" && (
           <div className="flex justify-end py-4">

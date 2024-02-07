@@ -25,7 +25,7 @@ const LandingPage = () => {
   }, [images.length]);
 
   return (
-    <>
+    <main>
       <div className="px-8 py-2 lg:py-8 bg-[#FAF3F0]">
         <div>
           <div className="flex items-center ">
@@ -58,13 +58,13 @@ const LandingPage = () => {
                     <div className="grid grid-cols-3 space-x-4 mx-auto px-16 py-6 bg-white shadow-lg rounded-xl">
                       <div className="col-span-1">
                         <p className="text-sm font-bold ">Interest rate</p>
-                        <p className="text-5xl text-orange-300">
+                          <p className="text-5xl text-[#0C356A]">
                           {images[currentImageIndex].interest}
                         </p>
                       </div>
                       <div className="col-span-2">
                         <p className="text-sm font-bold ">Monthly payments</p>
-                        <p className="text-5xl text-orange-300">
+                        <p className="text-5xl text-[#0C356A]">
                           {images[currentImageIndex].price}
                         </p>
                       </div>
@@ -77,8 +77,8 @@ const LandingPage = () => {
         </div>
       </div>
 
-      <div className="bg-white px-8 py-16">
-        <h1 className="pb-10 text-center text-5xl font-semibold">
+      <div className="bg-white px-8 py-16" role="article">
+        <h1 className="pb-10 text-center text-5xl font-semibold" aria-label="section-title">
           Why choose Houzez
         </h1>
 
@@ -88,7 +88,7 @@ const LandingPage = () => {
               className="h-12 w-12 text-[#0C356A] mx-auto"
               aria-hidden="true"
             />
-            <h3 className="font-bold text-2xl">Higher proceeds</h3>
+            <h2 className="font-bold text-2xl">Higher proceeds</h2>
             <p>
               Maximize your property sales potential by up to 14% with our
               tailored buyer interaction strategies.
@@ -100,7 +100,7 @@ const LandingPage = () => {
               className="h-12 w-12 text-[#0C356A] mx-auto"
               aria-hidden="true"
             />
-            <h3 className="font-bold text-2xl">More Buyers / Sellers</h3>
+            <h2 className="font-bold text-2xl">More Buyers / Sellers</h2>
             <p>
               Accelerate your transactions by tapping into our extensive network
               of buyers and sellers for swift closures.
@@ -111,7 +111,7 @@ const LandingPage = () => {
               className="h-12 w-12 text-[#0C356A] mx-auto"
               aria-hidden="true"
             />
-            <h3 className="font-bold text-2xl">Faster Property Closing</h3>
+            <h2 className="font-bold text-2xl">Faster Property Closing</h2>
             <p>
               Properties undergo swift closure facilitated by ongoing bidding
               and negotiations, expediting the transaction process.
@@ -120,7 +120,7 @@ const LandingPage = () => {
         </div>
       </div>
 
-      <div className="bg-[#FAF3F0] px-16 py-8 lg:py-12">
+      <div className="bg-[#FAF3F0] px-16 py-8 lg:py-12" role="article">
         <h1 className="text-center text-5xl font-semibold">
           How Houzez changed lives
         </h1>
@@ -146,7 +146,7 @@ const LandingPage = () => {
           ))}
         </div>
       </div>
-    </>
+    </main>
   );
 };
 

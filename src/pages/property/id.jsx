@@ -177,7 +177,7 @@ function PropertyByIdPage() {
   });
 
   return (
-    <div className="container mx-auto px-8 md:px-20  py-4">
+    <main className="container mx-auto px-8 md:px-20  py-4" role="main">
       {loading || property.length === 0 ? (
         <Loader />
       ) : (
@@ -203,8 +203,8 @@ function PropertyByIdPage() {
               </div>
             )}
 
-          <div>
-            <div className="">
+          <div role="article">
+            <div role="figure">
               <img
                 src={property[0].image.url}
                 alt={property[0].address}
@@ -215,7 +215,7 @@ function PropertyByIdPage() {
             <div className="py-4">
               <Tag
                 value={property[0].status}
-                extraStyle="mt-4 bg-cyan-500 w-fit text-center"
+                extraStyle="mt-4 bg-teal-700 w-fit text-center"
               />
 
               <h1 className="text-4xl font-bold pt-4 pb-2">
@@ -274,7 +274,7 @@ function PropertyByIdPage() {
               property.length > 0 &&
               user[0].accountType === "seller" &&
               property[0].sellerId === user[0].id && (
-                <div className="">
+                <div>
                   <h1 className="text-2xl border-b border-gray-300 py-2">
                     Manage property status
                   </h1>
@@ -452,7 +452,7 @@ function PropertyByIdPage() {
           </div>
         </>
       )}
-    </div>
+    </main>
   );
 }
 
