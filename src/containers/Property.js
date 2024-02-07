@@ -22,7 +22,7 @@ function PropertyContainer({ property }) {
                 </h2>
                 <Tag
                   value={property.status}
-                  extraStyle="bg-teal-500 float-right"
+                  extraStyle="bg-teal-700 float-right"
                 />
               </div>
               <div className="flex space-x-4 pb-4 pt-1">

@@ -25,7 +25,7 @@ const BuyersPage = () => {
   const filteredData = filterData(buyers, limit, searchBox);
 
   return (
-    <div className="px-16 py-4">
+    <div className="px-16 py-4" role="main">
       <div className="container mx-auto px-4 sm:px-8">
         <div className="py-8">
           <div>
@@ -59,7 +59,7 @@ const BuyersPage = () => {
                     <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider">
                       Created at
                     </th>
-                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider"></th>
+                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-lg font-semibold text-gray-600 uppercase tracking-wider"><span className="sr-only">View</span></th>
                   </tr>
                 </thead>
                 <tbody>
