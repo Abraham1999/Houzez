@@ -31,12 +31,12 @@ const LandingPage = () => {
           <div className="flex items-center ">
             <div className="flex-1  pb-16 lg:pb-24 mx-auto rounded-lg">
               <div className="flex flex-col md:flex-row">
-                <div className="sm:m-auto sm:w-full sm:max-w-md py-8">
+                <div className="sm:m-auto sm:w-full sm:max-w-md py-8" tabIndex={0}>
                   <h1 className="text-left text-6xl font-bold tracking-tight">
                     Make one of our houses,{" "}
                     <span className="italic">your home!</span>
                   </h1>
-                  <p className="py-8 text-gray-500 text-xl font-bold">
+                  <p className="py-8 text-gray-500 text-xl font-bold">                        
                     We eliminate middlemen by connecting you directly to
                     property sellers and buyers.
                   </p>
@@ -78,12 +78,12 @@ const LandingPage = () => {
       </div>
 
       <div className="bg-white px-8 py-16" role="article">
-        <h1 className="pb-10 text-center text-5xl font-semibold" aria-label="section-title">
+        <h1 className="pb-10 text-center text-5xl font-semibold" tabIndex={0}>
           Why choose Houzez
         </h1>
 
         <div className="text-center grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <div>
+          <div tabIndex={0}>
             <CurrencyPoundIcon
               className="h-12 w-12 text-[#0C356A] mx-auto"
               aria-hidden="true"
@@ -95,7 +95,7 @@ const LandingPage = () => {
             </p>
           </div>
 
-          <div>
+          <div tabIndex={0}>
             <UserGroupIcon
               className="h-12 w-12 text-[#0C356A] mx-auto"
               aria-hidden="true"
@@ -106,7 +106,7 @@ const LandingPage = () => {
               of buyers and sellers for swift closures.
             </p>
           </div>
-          <div>
+          <div tabIndex={0}>
             <CheckCircleIcon
               className="h-12 w-12 text-[#0C356A] mx-auto"
               aria-hidden="true"
@@ -121,13 +121,13 @@ const LandingPage = () => {
       </div>
 
       <div className="bg-[#FAF3F0] px-16 py-8 lg:py-12" role="article">
-        <h1 className="text-center text-5xl font-semibold">
+        <h1 className="text-center text-5xl font-semibold" tabIndex={0}>
           How Houzez changed lives
         </h1>
 
         <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-2">
           {landingPageCards.map((card) => (
-            <figure key={card.id} className="md:flex bg-white rounded-xl p-8 md:p-0">
+            <figure key={card.id} className="md:flex bg-white rounded-xl p-8 md:p-0" tabIndex={0}>
               <img
                 className="object-cover w-24 h-24 md:w-48 md:h-auto mx-auto  md:rounded-l-md"
                 src={card.url}
