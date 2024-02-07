@@ -18,7 +18,7 @@ const LoginPage = () => {
     emailRef.current.value = "";
     passwordRef.current.value = "";
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setEmailError(!emailRef.current.value);
     setPasswordError(!passwordRef.current.value);
@@ -28,26 +28,17 @@ const LoginPage = () => {
       validateEmail(emailRef.current.value) &&
       passwordRef.current.value
     ) {
-      loginUserHandler({
+      await loginUserHandler({
         email: emailRef.current.value,
         password: passwordRef.current.value,
       }).then((data) => {
-        if (data.length === 1) {
-          localStorage.setItem("houzez_email", data[0].email);
-          navigate(0);
-          clearForm();
-        } else {
-          alert("Incorrect login details");
-        }
+        console.log(data);
+        if (!data.user) return;
+        clearForm();
+        navigate("/property");
       });
     }
   };
-
-  useEffect(() => {
-    if (localStorage.getItem("houzez_email")) {
-      navigate("/property");
-    }
-  }, [navigate]);
 
   return (
     <div className="py-16 w-full max-w-2xl justify-center mx-auto">

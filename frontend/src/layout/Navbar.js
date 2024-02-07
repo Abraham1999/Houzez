@@ -1,26 +1,30 @@
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { UserContext, classNames } from "../utils/helpers";
+import { classNames } from "../utils/helpers";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { navigation } from "../utils/data";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../components/button";
+import { useAuthState } from "../context";
 
 function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
-  const user = useContext(UserContext);
+  const userDetails = useAuthState();
   const [navigationList, setNavigationList] = useState([]);
 
+  console.log(userDetails);
   useEffect(() => {
-    if (user === null) {
+    if (userDetails.userId === null) {
       setNavigationList(navigation);
-    } else if (user[0].accountType === "seller") {
+    }
+    // TODO: WORK ON THIS IF
+    else if (userDetails.userId === "seller") {
       setNavigationList(navigation.filter((item) => item.name !== "Sellers"));
-    } else if (user[0].accountType === "buyer") {
+    } else if (userDetails.userId === "buyer") {
       setNavigationList(navigation.filter((item) => item.name !== "Buyers"));
     }
-  }, [user]);
+  }, [userDetails.userId]);
 
   const handleLogout = () => {
     localStorage.removeItem("houzez_email");
@@ -78,7 +82,7 @@ function Navbar() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                {user === null ? (
+                {userDetails.userId === null ? (
                   <Link
                     to="register"
                     className="font-semibold relative rounded-full border border-[#0C356A] px-2 text-[#0C356A] hover:text-[#0C356A] focus:outline-none focus:ring-2 focus:ring-[#0C356A] focus:ring-offset-2 focus:ring-offset-[#0C356A]"

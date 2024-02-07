@@ -2,7 +2,7 @@ import { useContext, useEffect, useReducer, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { UserContext } from "../../utils/helpers";
 import { propertyReducer } from "../../services/reducers/property";
-import { usersReducer } from "../../services/reducers/users";
+import { UserReducer } from "../../services/reducers/users";
 import {
   deleteProperty,
   editPropertyHandler,
@@ -79,7 +79,7 @@ function PropertyByIdPage() {
     }
   }, [property, showChangeStatusForm]);
 
-  const [buyers, dispatchGetBuyerList] = useReducer(usersReducer, []);
+  const [buyers, dispatchGetBuyerList] = useReducer(UserReducer, []);
 
   useEffect(() => {
     getUsers(dispatchGetBuyerList, "buyer");

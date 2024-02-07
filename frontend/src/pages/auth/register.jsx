@@ -3,8 +3,8 @@ import Input from "../../components/input";
 import Button from "../../components/button";
 import RadioButton from "../../components/radio";
 import { validateEmail } from "../../utils/helpers";
-import { addUserHandler, getAllUsers } from "../../services/actions/users";
-import { usersReducer } from "../../services/reducers/users";
+import { addUserHandler } from "../../services/actions/users";
+import { UserReducer } from "../../services/reducers/users";
 import { Link, useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
@@ -30,8 +30,8 @@ const RegisterPage = () => {
   const handleChangeAccountType = (e) => {
     setAccountType(e.target.value);
   };
-  const [user, dispatch] = useReducer(usersReducer, []);
-  const [usersList, dispatchGetAllUsers] = useReducer(usersReducer, []);
+  const [user, dispatch] = useReducer(UserReducer, []);
+  const [usersList, dispatchGetAllUsers] = useReducer(UserReducer, []);
 
   const clearForm = () => {
     firstNameRef.current.value = "";
@@ -109,9 +109,6 @@ const RegisterPage = () => {
     }
   }, [navigate, user, userCreated]);
 
-  useEffect(() => {
-    getAllUsers(dispatchGetAllUsers);
-  }, []);
 
   return (
     <div className="w-full max-w-2xl justify-center mx-auto">

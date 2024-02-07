@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { filterData, generateInitials } from "../../utils/helpers";
 import { useEffect, useReducer, useState } from "react";
-import { usersReducer } from "../../services/reducers/users";
+import { UserReducer } from "../../services/reducers/users";
 import { getUsers } from "../../services/actions/users";
 import FilterComponent from "../../components/filter";
 import { limitOptions } from "../../utils/data";
@@ -9,7 +9,7 @@ import { limitOptions } from "../../utils/data";
 const BuyersPage = () => {
   const navigate = useNavigate();
 
-  const [buyers, dispatch] = useReducer(usersReducer, []);
+  const [buyers, dispatch] = useReducer(UserReducer, []);
 
   useEffect(() => {
     if (!localStorage.getItem("houzez_email")) {

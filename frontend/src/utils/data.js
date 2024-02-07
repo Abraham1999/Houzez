@@ -1,3 +1,16 @@
+import LoginPage from "../pages/auth/login";
+import RegisterPage from "../pages/auth/register";
+import BookingsPage from "../pages/bookings";
+import BuyersPage from "../pages/buyer";
+import BuyerId from "../pages/buyer/id";
+import LandingPage from "../pages/landing";
+import NotFoundPage from "../pages/notfound";
+import PropertiesPage from "../pages/property";
+import AddProperty from "../pages/property/add";
+import PropertyByIdPage from "../pages/property/id";
+import SellersPage from "../pages/seller";
+import SellerId from "../pages/seller/id";
+
 export const navigation = [
   { name: "Properties", href: "/property" },
   { name: "Sellers", href: "/sellers" },
@@ -211,3 +224,71 @@ export const statusTypes = [
   { value: "Sold", label: "Sold" },
   { value: "Withdrawn", label: "Withdrawn" },
 ];
+
+export const routes = [
+  {
+		path: '/',
+		element: LandingPage,
+		isPrivate: false,
+	},
+  {
+		path: 'bookings',
+		element: BookingsPage,
+		isPrivate: true,
+	},
+  {
+		path: 'property',
+		element: PropertiesPage,
+		isPrivate: true,
+	},
+  {
+		path: 'property/:id',
+		element: PropertyByIdPage,
+		isPrivate: true,
+	},
+  {
+		path: 'property/add',
+		element: AddProperty,
+		isPrivate: true,
+	},
+  {
+		path: 'sellers',
+		element: SellersPage,
+		isPrivate: true,
+	},
+  {
+		path: 'sellers/:id',
+		element: SellerId,
+		isPrivate: true,
+	},
+  {
+		path: 'buyers',
+		element: BuyersPage,
+		isPrivate: true,
+	},
+  {
+		path: 'buyers/:id',
+		element: BuyerId,
+		isPrivate: true,
+	},
+  {
+		path: 'property/:propertyId/booking',
+		element: BookingsPage,
+		isPrivate: true,
+	},
+  {
+		path: 'login',
+		element: LoginPage,
+		isPrivate: false,
+	},
+  {
+		path: 'register',
+		element: RegisterPage,
+		isPrivate: false,
+	},
+  {
+    path: '*',
+    element: NotFoundPage,
+    isPrivate: false,
+  }
+]
