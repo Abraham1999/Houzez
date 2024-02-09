@@ -1,12 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Input from "../../components/input";
 import Button from "../../components/button";
 import { validateEmail } from "../../utils/helpers";
 import { loginUserHandler } from "../../services/actions/users";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuthDispatch, useAuthState } from "../../context";
+import toast from "react-hot-toast";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const dispatch = useAuthDispatch();
+  const { loading, errorMessage } = useAuthState();
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -28,14 +32,14 @@ const LoginPage = () => {
       validateEmail(emailRef.current.value) &&
       passwordRef.current.value
     ) {
-      await loginUserHandler({
-        email: emailRef.current.value,
-        password: passwordRef.current.value,
+      await loginUserHandler(dispatch, {
+        Email: emailRef.current.value,
+        Password: passwordRef.current.value,
       }).then((data) => {
-        console.log(data);
-        if (!data.user) return;
-        clearForm();
-        navigate("/property");
+        if (data) {
+          clearForm();
+          navigate("/property");
+        }
       });
     }
   };
@@ -71,6 +75,7 @@ const LoginPage = () => {
             className="w-full bg-[#0C356A] hover:bg-[#0C356A] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={handleSubmit}
             text="Login"
+            disabled={loading}
           />
         </div>
         <p className="pt-2">
@@ -83,4 +88,5 @@ const LoginPage = () => {
     </main>
   );
 };
+
 export default LoginPage;

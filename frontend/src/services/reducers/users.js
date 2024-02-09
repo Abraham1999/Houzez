@@ -10,6 +10,8 @@ export const state = {
   token: null || token,
   loading: false,
   errorMessage: null,
+  user: null,
+  users: [],
 };
 
 export const UserReducer = (state, action) => {
@@ -19,18 +21,11 @@ export const UserReducer = (state, action) => {
         ...state,
         loading: true,
       };
-    case "USER_LOADED":
-      return {
-        ...state,
-        user: action.payload.userId,
-        loading: false,
-        token: action.payload.authorizationToken,
-      };
     case "REGISTER_SUCCESS":
     case "LOGIN_SUCCESS":
       return {
         ...state,
-        user: action.payload.userId,
+        userId: action.payload.userId,
         token: action.payload.authorizationToken,
         loading: false,
       };
@@ -54,7 +49,14 @@ export const UserReducer = (state, action) => {
       };
     case "REMOVE_USER":
       return state.filter((user) => user.id !== action.payload);
+    case "LOGIN_ERROR":
+    case "REGISTER_ERROR":
+      return {
+        ...state,
+        loading: false,
+        errorMessage: action.error,
+      };
     default:
-      return state;
+      throw new Error(`Unhandled action type: ${action.type}`);
   }
 };

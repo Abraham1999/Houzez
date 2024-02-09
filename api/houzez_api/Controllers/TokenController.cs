@@ -35,13 +35,13 @@ namespace houzez_api.Controllers
 
             if (userCheck is not null)
             {
-                throw new ArgumentException($"User with email {userCheck.Email} already exists.");
+                return BadRequest($"User with email {userCheck.Email} already exists.");
             }
 
             _userData.Password = BCrypt.Net.BCrypt.HashPassword(_userData.Password);
             _userData = _userService.Create(_userData);
-            await Login(new LoginDTO { Email = _userData.Email, Password = _userData.Password });
-            return Ok(_userData);
+            var data = await Login(new LoginDTO { Email = _userData.Email, Password = _userData.Password });
+            return Ok(data);
         }
 
         [HttpPost]
@@ -54,7 +54,7 @@ namespace houzez_api.Controllers
 
                 if (user == null || !BCrypt.Net.BCrypt.Verify(_userData.Password, user.Password))
                 {
-                    throw new ArgumentException("Email or password is incorrect");
+                    return BadRequest(user);
                 }
 
 

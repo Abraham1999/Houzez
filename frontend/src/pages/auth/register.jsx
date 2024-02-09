@@ -1,14 +1,16 @@
-import React, { useEffect, useReducer, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Input from "../../components/input";
 import Button from "../../components/button";
 import RadioButton from "../../components/radio";
 import { validateEmail } from "../../utils/helpers";
 import { addUserHandler } from "../../services/actions/users";
-import { UserReducer } from "../../services/reducers/users";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuthDispatch, useAuthState } from "../../context";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
+  const dispatch = useAuthDispatch();
+  const { loading } = useAuthState();
 
   const firstNameRef = useRef();
   const lastNameRef = useRef();
@@ -25,13 +27,11 @@ const RegisterPage = () => {
   const [addressError, setAddressError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
   const [postcodeError, setPostcodeError] = useState(false);
-  const [accountType, setAccountType] = useState("buyer");
-  const [userCreated, setUserCreated] = useState(false);
+  const [AccountType, setAccountType] = useState("buyer");
+  
   const handleChangeAccountType = (e) => {
     setAccountType(e.target.value);
   };
-  const [user, dispatch] = useReducer(UserReducer, []);
-  const [usersList, dispatchGetAllUsers] = useReducer(UserReducer, []);
 
   const clearForm = () => {
     firstNameRef.current.value = "";
@@ -42,6 +42,7 @@ const RegisterPage = () => {
     phoneRef.current.value = "";
     passwordRef.current.value = "";
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -63,52 +64,33 @@ const RegisterPage = () => {
       passwordRef.current.value &&
       postcodeRef.current.value
     ) {
-      let checkIfEmailExists = usersList.filter((user) =>
-        user.email.includes(emailRef.current.value)
-      );
+      // let checkIfEmailExists = usersList.filter((user) =>
+      //   user.email.includes(emailRef.current.value)
+      // );
 
-      if (checkIfEmailExists.length > 0) {
-        alert("User Exists, select another email.");
-        return;
-      }
+      // if (checkIfEmailExists.length > 0) {
+      //   alert("User Exists, select another email.");
+      //   return;
+      // }
 
-      addUserHandler(
-        {
-          firstName: firstNameRef.current.value,
-          lastName: lastNameRef.current.value,
-          email: emailRef.current.value,
-          address: addressRef.current.value,
-          postcode: postcodeRef.current.value,
-          phone: phoneRef.current.value,
-          password: passwordRef.current.value,
-          accountType,
-          createdAt: new Date().toUTCString(),
-        },
-        dispatch
-      );
-      setUserCreated(!userCreated);
-      clearForm();
+      addUserHandler(dispatch, {
+        FirstName: firstNameRef.current.value,
+        LastName: lastNameRef.current.value,
+        Email: emailRef.current.value,
+        Address: addressRef.current.value,
+        PostCode: postcodeRef.current.value,
+        Phone: phoneRef.current.value,
+        Password: passwordRef.current.value,
+        AccountType,
+        CreatedAt: new Date().toUTCString(),
+      }).then((data) => {
+        if (data) {
+          clearForm();
+          navigate("/property");
+        }
+      });
     }
   };
-
-  useEffect(() => {
-    if (
-      user &&
-      user[0] &&
-      userCreated &&
-      localStorage.getItem("houzez_email") === null
-    ) {
-      //Store the user's email in the local storage so we can use it a as means of validating if the user has an account.
-      localStorage.setItem("houzez_email", user[0].email);
-    }
-  }, [user, userCreated]);
-
-  useEffect(() => {
-    if (localStorage.getItem("houzez_email")) {
-      navigate("/property");
-    }
-  }, [navigate, user, userCreated]);
-
 
   return (
     <main className="w-full max-w-2xl justify-center mx-auto">
@@ -184,7 +166,7 @@ const RegisterPage = () => {
               name="buyer"
               onChange={(e) => handleChangeAccountType(e)}
               value="buyer"
-              checked={accountType === "buyer"}
+              checked={AccountType === "buyer"}
             />
           </div>
 
@@ -194,7 +176,7 @@ const RegisterPage = () => {
               name="seller"
               onChange={(e) => handleChangeAccountType(e)}
               value="seller"
-              checked={accountType === "seller"}
+              checked={AccountType === "seller"}
             />
           </div>
 
@@ -215,6 +197,7 @@ const RegisterPage = () => {
             className="w-full bg-[#0C356A] hover:bg-[#0C356A] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={handleSubmit}
             text="Register"
+            disabled={loading}
           />
         </div>
         <p className="pt-2">
